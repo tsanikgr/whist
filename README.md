@@ -48,12 +48,12 @@ In the following **UML class diagrams**, many classes are ommited for brevity re
 --------
 
 ### Controllers
-![Diagram 1 - Controllers &#40;Presenters&#41;](http://github.com/myDiagram "Diagram 1 - Controllers &#40;Presenters&#41;")
+![Diagram 1 - Controllers &#40;Presenters&#41;](https://github.com/tsanikgr/whist/blob/master/uml/overview_controllers_ai.png "Diagram 1 - Controllers &#40;Presenters&#41;")
 
 
 
 ### Views
-![Diagram 2 - Views](http://github.com/myDiagram2 "Diagram 2 - Views")
+![Diagram 2 - Views](https://github.com/tsanikgr/whist/blob/master/uml/overview_views.png "Diagram 2 - Views")
 
 LibGDX's scene2d objects.
 

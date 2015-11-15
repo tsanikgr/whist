@@ -1,0 +1,34 @@
+
+statistics.png
+size: 2048,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+back
+  rotate: false
+  xy: 1248, 867
+  size: 119, 118
+  orig: 119, 118
+  offset: 0, 0
+  index: -1
+back_Down
+  rotate: false
+  xy: 1248, 747
+  size: 119, 118
+  orig: 119, 118
+  offset: 0, 0
+  index: -1
+back_group
+  rotate: false
+  xy: 0, 0
+  size: 1246, 985
+  orig: 1246, 985
+  offset: 0, 0
+  index: -1
+background
+  rotate: false
+  xy: 0, 0
+  size: 1246, 985
+  orig: 1246, 985
+  offset: 0, 0
+  index: -1

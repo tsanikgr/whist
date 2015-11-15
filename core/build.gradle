@@ -1,0 +1,20 @@
+apply plugin: "java"
+
+sourceCompatibility = JAVA_SOURCE_COMPATIBILITY
+[compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
+
+sourceSets.main.java.srcDirs = [ "src/" ]
+
+
+eclipse.project {
+    name = appName + "-core"
+}
+dependencies {
+    compile 'org.jetbrains:annotations:13.0'
+}
+
+sonarqube {
+    properties {
+        property "sonar.projectName", "Core"
+    }
+}

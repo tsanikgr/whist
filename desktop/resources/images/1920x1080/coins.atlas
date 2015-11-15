@@ -1,0 +1,195 @@
+
+coins.png
+size: 2048,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+back
+  rotate: false
+  xy: 1778, 904
+  size: 119, 118
+  orig: 119, 118
+  offset: 0, 0
+  index: -1
+back_Down
+  rotate: false
+  xy: 1657, 684
+  size: 119, 118
+  orig: 119, 118
+  offset: 0, 0
+  index: -1
+back_group_beer
+  rotate: false
+  xy: 130, 128
+  size: 60, 75
+  orig: 60, 75
+  offset: 0, 0
+  index: -1
+background_beer
+  rotate: false
+  xy: 130, 128
+  size: 60, 75
+  orig: 60, 75
+  offset: 0, 0
+  index: -1
+back_group_coffee
+  rotate: false
+  xy: 1125, 808
+  size: 68, 70
+  orig: 68, 70
+  offset: 0, 0
+  index: -1
+background_coffee
+  rotate: false
+  xy: 1125, 808
+  size: 68, 70
+  orig: 68, 70
+  offset: 0, 0
+  index: -1
+back_group_coins_icon
+  rotate: false
+  xy: 0, 76
+  size: 128, 127
+  orig: 128, 127
+  offset: 0, 0
+  index: -1
+background_coins_icon
+  rotate: false
+  xy: 0, 76
+  size: 128, 127
+  orig: 128, 127
+  offset: 0, 0
+  index: -1
+back_group_dinner
+  rotate: false
+  xy: 1778, 837
+  size: 68, 65
+  orig: 68, 65
+  offset: 0, 0
+  index: -1
+background_dinner
+  rotate: false
+  xy: 1778, 837
+  size: 68, 65
+  orig: 68, 65
+  offset: 0, 0
+  index: -1
+back_group_footer
+  rotate: false
+  xy: 1125, 302
+  size: 909, 60
+  orig: 909, 60
+  offset: 0, 0
+  index: -1
+background_footer
+  rotate: false
+  xy: 1125, 302
+  size: 909, 60
+  orig: 909, 60
+  offset: 0, 0
+  index: -1
+back_group_suit
+  rotate: false
+  xy: 0, 10
+  size: 71, 64
+  orig: 71, 64
+  offset: 0, 0
+  index: -1
+background_suit
+  rotate: false
+  xy: 0, 10
+  size: 71, 64
+  orig: 71, 64
+  offset: 0, 0
+  index: -1
+back_group_title_back
+  rotate: false
+  xy: 0, 880
+  size: 1244, 142
+  orig: 1244, 142
+  offset: 0, 0
+  index: -1
+background_title_back
+  rotate: false
+  xy: 0, 880
+  size: 1244, 142
+  orig: 1244, 142
+  offset: 0, 0
+  index: -1
+back_group_watermark
+  rotate: false
+  xy: 0, 425
+  size: 591, 453
+  orig: 591, 453
+  offset: 0, 0
+  index: -1
+background_watermark
+  rotate: false
+  xy: 0, 425
+  size: 591, 453
+  orig: 591, 453
+  offset: 0, 0
+  index: -1
+buy1
+  rotate: false
+  xy: 0, 205
+  size: 530, 218
+  orig: 530, 218
+  offset: 0, 0
+  index: -1
+buy1_Down
+  rotate: false
+  xy: 1125, 584
+  size: 530, 218
+  orig: 530, 218
+  offset: 0, 0
+  index: -1
+buy2
+  rotate: false
+  xy: 593, 660
+  size: 530, 218
+  orig: 530, 218
+  offset: 0, 0
+  index: -1
+buy2_Down
+  rotate: false
+  xy: 1125, 364
+  size: 530, 218
+  orig: 530, 218
+  offset: 0, 0
+  index: -1
+buy3
+  rotate: false
+  xy: 593, 440
+  size: 530, 218
+  orig: 530, 218
+  offset: 0, 0
+  index: -1
+buy3_Down
+  rotate: false
+  xy: 593, 220
+  size: 530, 218
+  orig: 530, 218
+  offset: 0, 0
+  index: -1
+buy4
+  rotate: false
+  xy: 1246, 804
+  size: 530, 218
+  orig: 530, 218
+  offset: 0, 0
+  index: -1
+buy4_Down
+  rotate: false
+  xy: 532, 0
+  size: 530, 218
+  orig: 530, 218
+  offset: 0, 0
+  index: -1
+dots
+  rotate: false
+  xy: 1125, 292
+  size: 212, 8
+  orig: 212, 8
+  offset: 0, 0
+  index: -1

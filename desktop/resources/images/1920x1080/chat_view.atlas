@@ -1,0 +1,76 @@
+
+chat_view.png
+size: 2048,2048
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+back_back
+  rotate: false
+  xy: 0, 1078
+  size: 1959, 882
+  orig: 1959, 882
+  offset: 0, 0
+  index: -1
+back_close_chat
+  rotate: false
+  xy: 1961, 1897
+  size: 63, 63
+  orig: 63, 63
+  offset: 0, 0
+  index: -1
+custom_message
+  rotate: false
+  xy: 1074, 975
+  size: 546, 101
+  orig: 546, 101
+  offset: 0, 0
+  index: -1
+custom_message_Down
+  rotate: false
+  xy: 0, 103
+  size: 546, 101
+  orig: 546, 101
+  offset: 0, 0
+  index: -1
+incoming_message
+  rotate: false
+  xy: 1074, 702
+  size: 358, 168
+  orig: 358, 168
+  offset: 0, 0
+  index: -1
+messages_mes_placeholders
+  rotate: false
+  xy: 0, 680
+  size: 1072, 396
+  orig: 1072, 396
+  offset: 0, 0
+  index: -1
+outgoing_message
+  rotate: false
+  xy: 548, 510
+  size: 417, 168
+  orig: 417, 168
+  offset: 0, 0
+  index: -1
+template_message
+  rotate: false
+  xy: 1074, 872
+  size: 546, 101
+  orig: 546, 101
+  offset: 0, 0
+  index: -1
+template_message_Down
+  rotate: false
+  xy: 0, 0
+  size: 546, 101
+  orig: 546, 101
+  offset: 0, 0
+  index: -1
+templates_placeholders
+  rotate: false
+  xy: 0, 206
+  size: 546, 472
+  orig: 546, 472
+  offset: 0, 0
+  index: -1

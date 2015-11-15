@@ -1,0 +1,208 @@
+
+game.png
+size: 2048,2048
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+back
+  rotate: false
+  xy: 244, 120
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
+back_Down
+  rotate: false
+  xy: 1368, 1210
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
+background
+  rotate: false
+  xy: 2042, 2031
+  size: 4, 4
+  orig: 4, 4
+  offset: 0, 0
+  index: -1
+button_score_arrow
+  rotate: false
+  xy: 1146, 387
+  size: 38, 21
+  orig: 38, 21
+  offset: 0, 0
+  index: -1
+chat
+  rotate: false
+  xy: 326, 120
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
+chat_Down
+  rotate: false
+  xy: 408, 120
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
+declare_layer_vertical_splitter
+  rotate: false
+  xy: 1331, 974
+  size: 1, 214
+  orig: 1, 214
+  offset: 0, 0
+  index: -1
+dialer_dialer_back
+  rotate: false
+  xy: 1368, 1443
+  size: 205, 313
+  orig: 205, 313
+  offset: 0, 0
+  index: -1
+game_layer_bb
+  rotate: false
+  xy: 0, 1190
+  size: 1366, 845
+  orig: 1366, 845
+  offset: 0, 0
+  index: -1
+label_p00
+  rotate: false
+  xy: 1612, 1882
+  size: 361, 153
+  orig: 361, 153
+  offset: 0, 0
+  index: -1
+label_p11
+  rotate: false
+  xy: 1612, 1882
+  size: 361, 153
+  orig: 361, 153
+  offset: 0, 0
+  index: -1
+label_p22
+  rotate: false
+  xy: 1612, 1882
+  size: 361, 153
+  orig: 361, 153
+  offset: 0, 0
+  index: -1
+label_p00_Disabled
+  rotate: false
+  xy: 607, 202
+  size: 361, 153
+  orig: 361, 153
+  offset: 0, 0
+  index: -1
+label_p11_Disabled
+  rotate: false
+  xy: 607, 202
+  size: 361, 153
+  orig: 361, 153
+  offset: 0, 0
+  index: -1
+label_p22_Disabled
+  rotate: false
+  xy: 607, 202
+  size: 361, 153
+  orig: 361, 153
+  offset: 0, 0
+  index: -1
+label_p33
+  rotate: false
+  xy: 244, 202
+  size: 361, 153
+  orig: 361, 153
+  offset: 0, 0
+  index: -1
+label_p33_Disabled
+  rotate: false
+  xy: 1612, 1727
+  size: 361, 153
+  orig: 361, 153
+  offset: 0, 0
+  index: -1
+lb
+  rotate: false
+  xy: 0, 0
+  size: 181, 76
+  orig: 181, 76
+  offset: 0, 0
+  index: -1
+pl_p0_bausen
+  rotate: false
+  xy: 1975, 1951
+  size: 65, 84
+  orig: 65, 84
+  offset: 0, 0
+  index: -1
+resign
+  rotate: false
+  xy: 490, 120
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
+resign_Down
+  rotate: false
+  xy: 572, 120
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
+score_back
+  rotate: false
+  xy: 1368, 1758
+  size: 242, 277
+  orig: 242, 277
+  offset: 0, 0
+  index: -1
+score_back_Down
+  rotate: false
+  xy: 0, 78
+  size: 242, 277
+  orig: 242, 277
+  offset: 0, 0
+  index: -1
+score_table_back
+  rotate: false
+  xy: 0, 410
+  size: 1329, 778
+  orig: 1329, 778
+  offset: 0, 0
+  index: -1
+score_table_no_13s
+  rotate: false
+  xy: 0, 357
+  size: 1144, 51
+  orig: 1144, 51
+  offset: 0, 0
+  index: -1
+start
+  rotate: false
+  xy: 1368, 1292
+  size: 148, 149
+  orig: 148, 149
+  offset: 0, 0
+  index: -1
+start_Down
+  rotate: false
+  xy: 970, 206
+  size: 148, 149
+  orig: 148, 149
+  offset: 0, 0
+  index: -1
+
+game2.png
+size: 1024,512
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+declare_layer_back
+  rotate: false
+  xy: 0, 0
+  size: 783, 445
+  orig: 783, 445
+  offset: 0, 0
+  index: -1

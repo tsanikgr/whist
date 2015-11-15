@@ -1,0 +1,188 @@
+
+settings.png
+size: 2048,512
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+_bt
+  rotate: false
+  xy: 1874, 82
+  size: 81, 81
+  orig: 81, 81
+  offset: 0, 0
+  index: -1
+back
+  rotate: false
+  xy: 618, 248
+  size: 119, 118
+  orig: 119, 118
+  offset: 0, 0
+  index: -1
+back_Down
+  rotate: false
+  xy: 478, 116
+  size: 119, 118
+  orig: 119, 118
+  offset: 0, 0
+  index: -1
+background_title_back
+  rotate: false
+  xy: 0, 368
+  size: 1244, 142
+  orig: 1244, 142
+  offset: 0, 0
+  index: -1
+background_title_icon
+  rotate: false
+  xy: 1785, 336
+  size: 174, 174
+  orig: 174, 174
+  offset: 0, 0
+  index: -1
+background_watermark
+  rotate: false
+  xy: 1246, 121
+  size: 537, 389
+  orig: 537, 389
+  offset: 0, 0
+  index: -1
+cards_cyan
+  rotate: false
+  xy: 1961, 429
+  size: 82, 81
+  orig: 82, 81
+  offset: 0, 0
+  index: -1
+cards_green
+  rotate: false
+  xy: 1961, 346
+  size: 82, 81
+  orig: 82, 81
+  offset: 0, 0
+  index: -1
+cards_orange
+  rotate: false
+  xy: 342, 18
+  size: 82, 81
+  orig: 82, 81
+  offset: 0, 0
+  index: -1
+cards_purple
+  rotate: false
+  xy: 504, 33
+  size: 82, 81
+  orig: 82, 81
+  offset: 0, 0
+  index: -1
+cards_red
+  rotate: false
+  xy: 739, 196
+  size: 82, 81
+  orig: 82, 81
+  offset: 0, 0
+  index: -1
+cards_selected
+  rotate: false
+  xy: 0, 65
+  size: 169, 169
+  orig: 169, 169
+  offset: 0, 0
+  index: -1
+language_selected
+  rotate: false
+  xy: 0, 65
+  size: 169, 169
+  orig: 169, 169
+  offset: 0, 0
+  index: -1
+cards_yellow
+  rotate: false
+  xy: 823, 196
+  size: 82, 81
+  orig: 82, 81
+  offset: 0, 0
+  index: -1
+checkbox
+  rotate: false
+  xy: 426, 0
+  size: 76, 74
+  orig: 76, 74
+  offset: 0, 0
+  index: -1
+checkbox_Checked
+  rotate: false
+  xy: 907, 204
+  size: 75, 73
+  orig: 75, 73
+  offset: 0, 0
+  index: -1
+color
+  rotate: false
+  xy: 1785, 165
+  size: 169, 169
+  orig: 169, 169
+  offset: 0, 0
+  index: -1
+color_Checked
+  rotate: false
+  xy: 171, 65
+  size: 169, 169
+  orig: 169, 169
+  offset: 0, 0
+  index: -1
+language_cn
+  rotate: false
+  xy: 739, 279
+  size: 87, 87
+  orig: 87, 87
+  offset: 0, 0
+  index: -1
+language_en
+  rotate: false
+  xy: 828, 279
+  size: 87, 87
+  orig: 87, 87
+  offset: 0, 0
+  index: -1
+language_fr
+  rotate: false
+  xy: 917, 279
+  size: 87, 87
+  orig: 87, 87
+  offset: 0, 0
+  index: -1
+language_gr
+  rotate: false
+  xy: 1006, 279
+  size: 87, 87
+  orig: 87, 87
+  offset: 0, 0
+  index: -1
+language_it
+  rotate: false
+  xy: 1095, 279
+  size: 87, 87
+  orig: 87, 87
+  offset: 0, 0
+  index: -1
+language_jp
+  rotate: false
+  xy: 1785, 76
+  size: 87, 87
+  orig: 87, 87
+  offset: 0, 0
+  index: -1
+slider_Background
+  rotate: false
+  xy: 0, 236
+  size: 616, 130
+  orig: 616, 130
+  offset: 0, 0
+  index: -1
+slider_Knob
+  rotate: false
+  xy: 342, 101
+  size: 134, 133
+  orig: 134, 133
+  offset: 0, 0
+  index: -1

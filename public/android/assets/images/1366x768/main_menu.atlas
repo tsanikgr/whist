@@ -1,0 +1,278 @@
+
+main_menu.png
+size: 2048,2048
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+back_title_back
+  rotate: false
+  xy: 501, 772
+  size: 906, 166
+  orig: 906, 166
+  offset: 0, 0
+  index: -1
+back_watermark
+  rotate: false
+  xy: 1695, 1738
+  size: 290, 301
+  orig: 290, 301
+  offset: 0, 0
+  index: -1
+background
+  rotate: false
+  xy: 1355, 767
+  size: 3, 3
+  orig: 3, 3
+  offset: 0, 0
+  index: -1
+button_achievements
+  rotate: false
+  xy: 1547, 1048
+  size: 131, 132
+  orig: 131, 132
+  offset: 0, 0
+  index: -1
+button_achievements_Down
+  rotate: false
+  xy: 1829, 1501
+  size: 131, 132
+  orig: 131, 132
+  offset: 0, 0
+  index: -1
+button_leaderboards
+  rotate: false
+  xy: 1547, 914
+  size: 131, 132
+  orig: 131, 132
+  offset: 0, 0
+  index: -1
+button_leaderboards_Down
+  rotate: false
+  xy: 1543, 646
+  size: 131, 132
+  orig: 131, 132
+  offset: 0, 0
+  index: -1
+button_rate
+  rotate: false
+  xy: 1221, 638
+  size: 132, 132
+  orig: 132, 132
+  offset: 0, 0
+  index: -1
+button_rate_Down
+  rotate: false
+  xy: 1695, 1501
+  size: 132, 132
+  orig: 132, 132
+  offset: 0, 0
+  index: -1
+button_settings
+  rotate: false
+  xy: 1034, 461
+  size: 132, 131
+  orig: 132, 131
+  offset: 0, 0
+  index: -1
+button_settings_Down
+  rotate: false
+  xy: 1409, 710
+  size: 132, 131
+  orig: 132, 131
+  offset: 0, 0
+  index: -1
+button_share
+  rotate: false
+  xy: 884, 134
+  size: 131, 132
+  orig: 131, 132
+  offset: 0, 0
+  index: -1
+button_share_Down
+  rotate: false
+  xy: 884, 0
+  size: 131, 132
+  orig: 131, 132
+  offset: 0, 0
+  index: -1
+button_tutorial
+  rotate: false
+  xy: 1409, 843
+  size: 132, 132
+  orig: 132, 132
+  offset: 0, 0
+  index: -1
+button_tutorial_Down
+  rotate: false
+  xy: 1543, 780
+  size: 132, 132
+  orig: 132, 132
+  offset: 0, 0
+  index: -1
+coins_icon
+  rotate: false
+  xy: 1634, 1342
+  size: 131, 132
+  orig: 131, 132
+  offset: 0, 0
+  index: -1
+coins_icon_Down
+  rotate: false
+  xy: 1634, 1208
+  size: 131, 132
+  orig: 131, 132
+  offset: 0, 0
+  index: -1
+coins_refill_icon
+  rotate: false
+  xy: 1221, 610
+  size: 26, 26
+  orig: 26, 26
+  offset: 0, 0
+  index: -1
+local_game
+  rotate: false
+  xy: 501, 625
+  size: 531, 145
+  orig: 531, 145
+  offset: 0, 0
+  index: -1
+local_game_Down
+  rotate: false
+  xy: 1101, 1329
+  size: 531, 145
+  orig: 531, 145
+  offset: 0, 0
+  index: -1
+logo_title
+  rotate: false
+  xy: 1695, 1635
+  size: 208, 101
+  orig: 208, 101
+  offset: 0, 0
+  index: -1
+logout
+  rotate: false
+  xy: 501, 151
+  size: 381, 115
+  orig: 381, 115
+  offset: 0, 0
+  index: -1
+logout_Down
+  rotate: false
+  xy: 501, 34
+  size: 381, 115
+  orig: 381, 115
+  offset: 0, 0
+  index: -1
+main_menu_layer_star_mask
+  rotate: false
+  xy: 1101, 1476
+  size: 592, 563
+  orig: 592, 563
+  offset: 0, 0
+  index: -1
+main_screen_star_mask
+  rotate: false
+  xy: 1034, 594
+  size: 185, 176
+  orig: 185, 176
+  offset: 0, 0
+  index: -1
+online_game
+  rotate: false
+  xy: 501, 478
+  size: 531, 145
+  orig: 531, 145
+  offset: 0, 0
+  index: -1
+online_game_Down
+  rotate: false
+  xy: 1101, 1182
+  size: 531, 145
+  orig: 531, 145
+  offset: 0, 0
+  index: -1
+online_image_group_mask
+  rotate: false
+  xy: 1101, 977
+  size: 444, 203
+  orig: 444, 203
+  offset: 0, 0
+  index: -1
+player_back
+  rotate: false
+  xy: 0, 3
+  size: 499, 935
+  orig: 499, 935
+  offset: 0, 0
+  index: -1
+player_icon
+  rotate: false
+  xy: 1900, 1371
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+player_name_cursorImage
+  rotate: false
+  xy: 1905, 1700
+  size: 3, 36
+  orig: 3, 36
+  offset: 0, 0
+  index: -1
+player_name_selectionImage
+  rotate: false
+  xy: 1168, 545
+  size: 6, 47
+  orig: 6, 47
+  offset: 0, 0
+  index: -1
+player_online_image_mask
+  rotate: false
+  xy: 501, 268
+  size: 444, 208
+  orig: 444, 208
+  offset: 0, 0
+  index: -1
+reveal_mask
+  rotate: false
+  xy: 0, 940
+  size: 1099, 1099
+  orig: 1099, 1099
+  offset: 0, 0
+  index: -1
+score
+  rotate: false
+  xy: 1767, 1368
+  size: 131, 131
+  orig: 131, 131
+  offset: 0, 0
+  index: -1
+score_Down
+  rotate: false
+  xy: 1767, 1235
+  size: 131, 131
+  orig: 131, 131
+  offset: 0, 0
+  index: -1
+score_score_icon
+  rotate: false
+  xy: 1101, 949
+  size: 25, 26
+  orig: 25, 26
+  offset: 0, 0
+  index: -1
+
+main_menu2.png
+size: 2048,2048
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+reveal_mask_hide
+  rotate: false
+  xy: 0, 0
+  size: 1097, 1098
+  orig: 1097, 1098
+  offset: 0, 0
+  index: -1

@@ -20,6 +20,7 @@ This project started from scratch in **September of 2015** and the biggest part 
 
 --------
 > _I never envisioned to make profit from this app --- I just love writing code in my free time, and decided to write an app for the card game I enjoy the most playing with my friends._
+
 --------
 
 I decided to open-source my code in order to showcase my work and get valuable feedback. Below, I present a high-level overview of the app --- feel free to [contact me](mailto:ntsaoussis@gmail.com) or dig in the code for more details. My CV can be found [here](https://uk.linkedin.com/in/ntsaousis).
@@ -43,6 +44,7 @@ In the following **UML class diagrams**, many classes are ommited for brevity re
 
 --------
 > **Tip:** The bullet points below the class diagrams will help you navigate them with ease.
+
 --------
 
 ### Controllers

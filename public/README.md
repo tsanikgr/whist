@@ -18,10 +18,8 @@ Planned future work: tests, iOS app, [app invites & deep links](https://develope
 
 This project started from scratch in **September of 2015** and the biggest part was complete by **mid-October**. Some chunks of code have been iterated over-and-over again during the past years, whenever I found time to experiment with Android development. However, every single line of re-used code has been revisited and (likely) refactored.
 
---------
 > _I never envisioned to make profit from this app --- I just love writing code in my free time, and decided to write an app for the card game I enjoy the most playing with my friends._
 
---------
 
 I decided to open-source my code in order to showcase my work and get valuable feedback. Below, I present a high-level overview of the app --- feel free to [contact me](mailto:ntsaoussis@gmail.com) or dig in the code for more details. My CV can be found [here](https://uk.linkedin.com/in/ntsaousis).
 

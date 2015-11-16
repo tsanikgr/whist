@@ -32,6 +32,7 @@ I decided to open-source my code in order to showcase my work and get valuable f
 ### Setup instructions
 
 In case you want to build and run the project yourself, you need to:
+
 1. Follow the instructions from [here](https://github.com/libgdx/libgdx/wiki/Gradle-and-Eclipse), to import an existing LibGDX, gradle based project.
 2. Implement the function `getStoragePassword()` in [`Config.java`]() (e.g. by simply returning a string).
 3. Create your own implementation of card shuffling in [`Dealer.java`]() (e.g. by calling `cards.shuffle()`).

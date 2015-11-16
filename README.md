@@ -21,7 +21,7 @@
 Welcome to the GitHub page of Whist.
 
 Whist is a trick-taking card game with many variations. The one implemented herein is very similar to [Oh Hell](https://en.wikipedia.org/wiki/Oh_Hell).
-The Android version is currently in open alpha-testing in the [Google Play Store](https://goo.gl/3ISVdr). In case the link is not working for you, please [send me](mailto:ntsaoussis@gmail.com) your gmail address and I will add you to the list of testers.
+The Android version is currently in open alpha-testing in the [Google Play Store](goo.gl/3ISVdr). In case the link is not working for you, please [send me](mailto:ntsaoussis@gmail.com) your gmail address and I will add you to the list of testers.
 
 
 ### Features
@@ -52,7 +52,7 @@ I decided to open-source my code in order to showcase my work and get valuable f
 In case you want to build and run the project yourself, you need to:
 
 1. Follow the instructions from [here](https://github.com/libgdx/libgdx/wiki/Gradle-and-Eclipse), to import an existing LibGDX, gradle based project.
-2. Implement the function `getStoragePassword()` in [`Config.java`]() (e.g. by simply returning a string).
+2. Implement the function `getStoragePassword()` in [`Config.java`] (e.g. by simply returning a string).
 3. Create your own implementation of card shuffling in [`Dealer.java`]() (e.g. by calling `cards.shuffle()`).
 4. Setup Google Games Services as explained [here](https://developers.google.com/games/services/console/enabling).
 5. Modify the [ids.xml]() file, with the application ID and achievement/leaderboards IDs you obtained in step (4).
@@ -238,3 +238,9 @@ In case you are interested, here are some of the metrics I obtain using the stat
 # Used libraries & code
 
 As already mentioned, I am using a modified version of the [StageBuilder](https://github.com/peakgames/libgdx-stagebuilder) library. The relevant code is in the [`assets`]() and [`stage_builder`]() packages. In addition, the [`Base64`]() class in the [`Cryptography.java`]() file was obtained from [here](http://migbase64.sourceforge.net/). The `BaseGameUtils`, `GameHelper` and `GameHelperUtils` classes where obtained from [Google's samples](https://github.com/playgameservices/android-basic-samples/tree/master/BasicSamples/libraries/BaseGameUtils/src/main/java/com/google/example/games/basegameutils). The [`LRUCache`]() was obtained from [here](https://github.com/igniterealtime/jxmpp/blob/master/jxmpp-util-cache/src/main/java/org/jxmpp/util/cache/LruCache.java).
+
+
+[`Config.java`]: [path]Config.java
+
+
+[path]: ../blob/master/core/src/com/tsanikgr/whist_multiplayer/

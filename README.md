@@ -1,3 +1,21 @@
+**Table of Contents**
+
+- [Whist](#)
+   - [Features](#)
+   - [About](#)
+   - [Setup instructions](#)
+- [High level overview](#)
+	- [Code Architecture](#)
+		- [Controllers](#)
+		- [Views](#)
+		- [Models](#)
+	- [AI computer opponents](#)
+	- [Multiplayer](#)
+	- [Software design pattern examples](#)
+- [Code metrics](#)
+- [Used libraries & code](#)
+
+
 # Whist
 
 Hello, I am very pleased to welcome you to the GitHub page of Whist.

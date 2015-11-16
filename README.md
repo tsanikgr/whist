@@ -53,23 +53,23 @@ In case you want to build and run the project yourself, you need to:
 
 1. Follow the instructions from [here](https://github.com/libgdx/libgdx/wiki/Gradle-and-Eclipse), to import an existing LibGDX, gradle based project.
 2. Implement the function `getStoragePassword()` in [`Config.java`], for example by simply returning a string.
-3. Create your own implementation of card shuffling in [`Dealer.java`]() (e.g. by calling `cards.shuffle()`).
+3. Create your own implementation of card shuffling in [`Dealer.java`] (e.g. by calling `cards.shuffle()`).
 4. Setup Google Games Services as explained [here](https://developers.google.com/games/services/console/enabling).
-5. Modify the [ids.xml]() file, with the application ID and achievement/leaderboards IDs you obtained in step (4).
-6. Modify the signing configurations in the android [`gradle.build`]() file, with your own keyAlias, keyPassword, storeFile and storePassword (both for the debug and release configurations).
+5. Modify the [ids.xml] file, with the application ID and achievement/leaderboards IDs you obtained in step (4).
+6. Modify the signing configurations in the android [`gradle.build`] file, with your own keyAlias, keyPassword, storeFile and storePassword (both for the debug and release configurations).
 
 # High level overview
 
 The app is built on top of the [LibGDX](https://github.com/libGDX/libGDX) game development framework and it is written in Java. Currently, it compiles for Android and Desktop,
-with an iOS version planned for the future. Platform specific code is placed in the [`android`](), [`desktop`]() and [`ios`]() directories, whereas all platform independent code is
-placed in the [`core`]() package. It also uses a customised version (to fit my own needs) of the [StageBuilder](https://github.com/peakgames/libgdx-stagebuilder) library, a project for building LibGDX stages (screens) from xml files. Please have a look at my other [repository](https://github.com/tsanikgr/illustrator-to-android), where I supply an Adobe Illustrator javascript which automatically exports graphical assets and .xml files for use with StageBuilder. Once the Illustrator file is updated, the UI of the app can be updated using two clicks, with no code modification needed whatsoever.
+with an iOS version planned for the future. Platform specific code is placed in the [`android`], [`desktop`] and [`ios`] directories, whereas all platform independent code is
+placed in the [`core`] package. It also uses a customised version (to fit my own needs) of the [StageBuilder](https://github.com/peakgames/libgdx-stagebuilder) library, a project for building LibGDX stages (screens) from xml files. Please have a look at my other [repository](https://github.com/tsanikgr/illustrator-to-android), where I supply an Adobe Illustrator javascript which automatically exports graphical assets and .xml files for use with StageBuilder. Once the Illustrator file is updated, the UI of the app can be updated using two clicks, with no code modification needed whatsoever.
 
 > One of the primary goals when I decided to write this game from scratch, was to create my own library, tools and workflows. This would allow me to quickly build new games in the future. As such, my top priorities were **code re-usability, maintainability, testability and minimal dependencies**.
 
 
 
 ## Code Architecture
-The structure follows the **Model View Presenter (MVP)** architecture. That said, please do not be confused: all _Presenters_ extend the `Controller` abstract class, and follow the `XxxController` naming convention (after the Model View Controller (MVC) architecture which is very similar).
+The structure follows the **Model View Presenter (MVP)** architecture. That said, please do not be confused: all _Presenters_ extend the [`Controller`] abstract class, and follow the `XxxController` naming convention (after the Model View Controller (MVC) architecture which is very similar).
 
 In the following **UML class diagrams**, many classes are ommited for brevity reasons, including all `XxxModel` classes (many are shown as fields). Moreover, only a selection of the members of each class is shown to save space. 
 
@@ -81,43 +81,43 @@ In the following **UML class diagrams**, many classes are ommited for brevity re
 ### Controllers
 ![Diagram 1 - Controllers (Presenters)](https://github.com/tsanikgr/whist/blob/master/uml/overview_controllers_ai.png "Diagram 1 - Controllers (Presenters)")
 
-All controllers inherit from the [`Controller`]() abstract class, which allows the communication between them.
+All controllers inherit from the [`Controller`] abstract class, which allows the communication between them.
 
 The diagram is color coded as follows:
 
 #### 1. App entry point (green)
 
-The [`AppController`]() class is the app entry point. It implements the [`IAppController`]() interface, which defines methods for the app lifecycle events (e.g. `onCreate()`, `render()`, `onDispose()` etc.).
+The [`AppController`] class is the app entry point. It implements the [`IAppController`] interface, which defines methods for the app lifecycle events (e.g. `onCreate()`, `render()`, `onDispose()` etc.).
 
-In addition, [`AppController`]() is a [`CompositeController`](), and is the **root of the controllers object graph**. In other words, all other controllers are its childern or grand-children.
+In addition, [`AppController`] is a [`CompositeController`], and is the **root of the controllers object graph**. In other words, all other controllers are its childern or grand-children.
 
 > **Note:** The proposed structure scheme makes it **easy to write unit tests**. Each controller can be easily swapped for a stub, allowing the independent testing of each one of them. At the same time, communication between them is easy without dependency injections.
 
 #### 2. First level controllers (blue)
 
-The name of each controller ([`Assets`](), [`Storage`](), [`CardController`]() etc.) and the members of the interfaces they implement pretty much sum up their responsibilities. 
+The name of each controller ([`Assets`], [`Storage`], [`CardController`] etc.) and the members of the interfaces they implement pretty much sum up their responsibilities. 
 
-The most interesting one is the composite controller [`ScreenDirector`](). It creates the root of all [`View`]() objects: this is represented by LibGDX's [`Stage`]() object. Moreover, it creates three [`ScreenController`]()s: the [`LoadingController`](), the [`MenuController`]() and the [`GameController`](), and activates the appropriate one according to the state of the app.
+The most interesting one is the composite controller [`ScreenDirector`]. It creates the root of all [`View`] objects: this is represented by LibGDX's [`Stage`] object. Moreover, it creates three [`ScreenController`]s: the [`LoadingController`], the [`MenuController`] and the [`GameController`], and activates the appropriate one according to the state of the app.
 
 #### 3. Screen controllers (red)
 
 These are the **presenters** which handle the creation and the managment of their Views.
-   - The [`LoadingController`]() updates the [`LoadingView`]()
-   - The [`MenuController`]() updates the [`MenuScreen`]() and gets notified about input events.
-   - The [`GameController`]() updates the [`GameScreen`]() and gets notified about input & game events.
+   - The [`LoadingController`] updates the [`LoadingView`]
+   - The [`MenuController`] updates the [`MenuScreen`] and gets notified about input events.
+   - The [`GameController`] updates the [`GameScreen`] and gets notified about input & game events.
    
-The [`GameController`]() delegates game actions to the concrete implementations the the [`IWhistGameController`]() interface.
+The [`GameController`] delegates game actions to the concrete implementations the the [`IWhistGameController`] interface.
 
 #### 4. Game controllers (yellow)
 
-All concrete implementations the the abstract class [`WhistGameController`]() make up the Whist-specific game controllers:
+All concrete implementations the the abstract class [`WhistGameController`] make up the Whist-specific game controllers:
 
-   - [`GameStateController`]()
-   - [`Dealer`]()
-   - [`PlayerController`]()
-   - [`BoardController`]()
+   - [`GameStateController`]
+   - [`Dealer`]
+   - [`PlayerController`]
+   - [`BoardController`]
 
-> **Note:** The [`GameSimulator`](), [`WhistExecutorService`](), and [`ThreadedGameModelPool`]() are **not** controller objects. They are just there to show how the [`PlayerController`]() implements the bots.
+> **Note:** The [`GameSimulator`], [`WhistExecutorService`], and [`ThreadedGameModelPool`] are **not** controller objects. They are just there to show how the [`PlayerController`] implements the bots.
 
 ### Views
 ![Diagram 2 - Views](https://github.com/tsanikgr/whist/blob/master/uml/overview_views.png "Diagram 2 - Views")
@@ -129,7 +129,7 @@ Views can be built synchronously or asynchronously. **A view is only built synch
 
 ### Models
 
-Models expose methods to update and querry their internal states, having no business logic (appart from some input validation when updating). They can be serialised to store them or transmit them through network calls. Most of them are placed in the `models` package.
+Models expose methods to update and querry their internal states, having no business logic (appart from some input validation when updating). They can be serialised to store them or transmit them through network calls. Most of them are placed in the [`models`] package.
 
 ## AI computer opponents
 
@@ -143,7 +143,7 @@ Although this algorithm is not suitable for a mobile application (... I guess us
 
 #### It is multithreaded
 
-  Uses an `ExecutorService` to create a _fixedThreadPool_ (see [`WhistExecutorService`]()). Synchronisation is achieved using `ReentrantReadWriteLock`s.
+  Uses an `ExecutorService` to create a _fixedThreadPool_ (see [`WhistExecutorService`]). Synchronisation is achieved using `ReentrantReadWriteLock`s.
   
 #### ... and recursive
 
@@ -151,20 +151,20 @@ Although this algorithm is not suitable for a mobile application (... I guess us
   
 #### ... and uses Pools to reduce the frequency of garbage collections
 
-  Every time a game action is simulated, a new [`SimGameState`]() (Simulation Game State) is created. Instead of creating a new object every time, `SimGameState`s are recycled whenever they are no longer required. To make matters simpler, one pool is used per thread. See [`ThreadedGameModelPool`]().
+  Every time a game action is simulated, a new [`SimGameModel`] (Simulation Game State) is created. Instead of creating a new object every time, [`SimGameModel`]s are recycled whenever they are no longer required. To make matters simpler, one pool is used per thread. See [`ThreadedGameModelPool`].
 
-> _Note:_ Due to the nature of the game, the number of [`SimGameState`]()s space quickly explodes, making it impossible to simulate all possible outcomes. To tackle this problem, some heuristic rules are used to limit the number of simulations per card, when dealing more than 6 to each player.
+> _Note:_ Due to the nature of the game, the number of [`SimGameModel`]s space quickly explodes, making it impossible to simulate all possible outcomes. To tackle this problem, some heuristic rules are used to limit the number of simulations per card, when dealing more than 6 to each player.
 
 ## Multiplayer
 
-The [Google Play Games Services API](https://developers.google.com/games/services/) was used to implement real-time multiplayer functionality across devices and users. All of the API specific code can be found in the [`google`]() package. It's a high level API, so it was very easy to implement the following:
+The [Google Play Games Services API](https://developers.google.com/games/services/) was used to implement real-time multiplayer functionality across devices and users. All of the API specific code can be found in the [`google`] package. It's a high level API, so it was very easy to implement the following:
 
 - Inviting friends to play against them, or playing against random opponents (or a mix of the two)
 - Handling invitations and notifying the user
 - Handling room life-cycle events
 - Creating and matching opponents for different game variants (such as the bet amount)
 
-Interesting bits of my own code can be found in the [`MultiplayerMessage`]() class (e.g. using a `Pool` to recycle messages and multiplexing information into single bytes to conserve network usage) and in the [`Messenger`]() class, whereby an inbox and an outbox are used to properly handle Messages received in the wrong order, or requesting messages that have been dropped to be re-sent. The `BaseGameUtils`, `GameHelper` and `GameHelperUtils` classes where obtained from Google's samples, and where slightly modified to the needs of the game.
+Interesting bits of my own code can be found in the [`MultiplayerMessage`] class (e.g. using a `Pool` to recycle messages and multiplexing information into single bytes to conserve network usage) and in the [`Messenger`] class, whereby an inbox and an outbox are used to properly handle Messages received in the wrong order, or requesting messages that have been dropped to be re-sent. The `BaseGameUtils`, `GameHelper` and `GameHelperUtils` classes where obtained from [Google's samples](https://github.com/playgameservices/android-basic-samples/tree/master/BasicSamples/libraries/BaseGameUtils/src/main/java/com/google/example/games/basegameutils), and where slightly modified to the needs of the game.
 
 ## Software design pattern examples
 
@@ -173,7 +173,7 @@ One example for each of the following software design patterns is given below.
 * #### Behavioral
     - **Observer**
     
-        The [`IStatisticsController`]() is an observable which notifies the attached observers (e.g the [`UserView`](), [`StatisticsView`]() and [`CoinsView`]()) when the [`StatisticsModel`]() changes.
+        The [`IStatistics`] controller is an observable which notifies the attached observers (e.g the [`UserView`], [`StatisticsView`] and [`CoinsView`]) when the [`StatisticsModel`] changes.
 
     - **Command**
 
@@ -181,41 +181,41 @@ One example for each of the following software design patterns is given below.
       
     - **Mediator**
 
-      Classes implementing the [`IScreenController`]() interface are concrete mediators: they handle the interaction between UI elements and their corresponding model representations. In other words, `ScreenController`s update the `Screen`s, and are informed by the `Screen`s about user events to update the models (`Screen`s inherit from `EventListener`).
+      Classes implementing the [`IScreenController`] interface are concrete mediators: they handle the interaction between UI elements and their corresponding model representations. In other words, [`ScreenController`]s update the [`Screen`]s, and are informed by the [`Screen`]s about user events to update the models ([`Screen`]s inherit from [`EventListener`]).
       
     - **Memento**
     
-      This pattern is used for game saving & loading. The [`GameController`]() (originator) supplies the [`IWhistGameController`]()s (caretakers) a [`GameModel`]() object to continue from a previously saved game.
+      This pattern is used for game saving & loading. The [`GameController`] (originator) supplies the [`IWhistGameController`]s (caretakers) a [`GameModel`] object to continue from a previously saved game.
             
     - **Strategy**
 
-      Classes implementing the `WhistAiInterface` can be swapped to create different bots. Classes extending `AbstractWhistAi` execute the strategy's logic asynchronously by default.
+      Classes implementing the [`WhistAiInterface`] can be swapped to create different bots. Classes extending [`AbstractWhistAi`] execute the strategy's logic asynchronously by default.
 
 * #### Structural
     - **Composite**
     
-       The object graph of all `Controller`s is formed using the composite pattern. `CompositeController`s, such as the app entry point (`AppController`), delegate work to their child controllers. Also, `Screen`s are composite `View`s.
+       The object graph of all [`Controller]`s is formed using the composite pattern. [`CompositeController`]s, such as the app entry point ([`AppController`]), delegate work to their child controllers. Also, [`Screen`]s are composite [`View`]s.
        
     - **Facade**
     
-       `Screen`s are facades to `View`s. Most of the communication between `IScreenController`s and UI elements go through them (in other words screens delegate updates to the appropriate `View`.)
+       [`Screen`]s are facades to [`View`]s. Most of the communication between [`IScreenController]`s and UI elements go through them (in other words screens delegate updates to the appropriate [`View`].)
        
     - **Pools**
     
-       Pools are used to recycle objects, and hence reduce the frequency of garbage collections. They are used in many places: network messages (`MultiplayerMessage`), simulated game states (`SimGameState`), `Action`s attached to actors etc.
+       Pools are used to recycle objects, and hence reduce the frequency of garbage collections. They are used in many places: network messages ([`MultiplayerMessage`]), simulated game states ([`SimGameModel`]), `Action`s attached to actors etc.
 
 * #### Creational
     - **Factory method**
     
-      The abstract class `Screen` provides the methods `buildViewSync(String)`, `buildViewAsync(String)` and `getView(String, Class<T>)`. The subclasses of `Screen` decide which views to instantiate.
+      The abstract class `[Screen]` provides the methods `buildViewSync(String)`, `buildViewAsync(String)` and `getView(String, Class<T>)`. The subclasses of [`Screen`] decide which views to instantiate.
     
     - **Builder**
     
-       A variation of the builder pattern is used for the circular reveal animations. `Animators` provide an `AnimatorConfig` object, which can be modified to customise the animation. However, `AnimatorConfig` objects are not builders _per se_, since they are members of `Animators` instead of handling their creation. Nevetherless, they separate the representation of `Animators` from their creation.
+       A variation of the builder pattern is used for the circular reveal animations. [`Animators`] provide an [`AnimatorParams`] object, which can be modified to customise the animation. However, [`AnimatorParams`] objects are not builders _per se_, since they are members of [`Animator`]s instead of handling their creation. Nevetherless, they separate the representation of [`Animator`]s from their creation.
        
     - **Prototype**
     
-      `GameModel`s provide a `copy(GameModel)` member, which returns a clone ...`GameModel`.
+      [`GameModel`]s provide a `copy(GameModel)` member, which returns a clone ...[`GameModel`].
 
 # Code metrics
 
@@ -237,7 +237,60 @@ In case you are interested, here are some of the metrics I obtain using the stat
 
 # Used libraries & code
 
-As already mentioned, I am using a modified version of the [StageBuilder](https://github.com/peakgames/libgdx-stagebuilder) library. The relevant code is in the [`assets`]() and [`stage_builder`]() packages. In addition, the [`Base64`]() class in the [`Cryptography.java`]() file was obtained from [here](http://migbase64.sourceforge.net/). The `BaseGameUtils`, `GameHelper` and `GameHelperUtils` classes where obtained from [Google's samples](https://github.com/playgameservices/android-basic-samples/tree/master/BasicSamples/libraries/BaseGameUtils/src/main/java/com/google/example/games/basegameutils). The [`LRUCache`]() was obtained from [here](https://github.com/igniterealtime/jxmpp/blob/master/jxmpp-util-cache/src/main/java/org/jxmpp/util/cache/LruCache.java).
+As already mentioned, I am using a modified version of the [StageBuilder](https://github.com/peakgames/libgdx-stagebuilder) library. The relevant code is in the [`assets`](../master/core/src/com/tsanikgr/whist_multiplayer/assets/) and [`stage_builder`](../master/core/src/com/tsanikgr/whist_multiplayer/stage_builder) packages. In addition, the [`Base64`]() class in the [`Cryptography.java`](../master/core/src/com/tsanikgr/whist_multiplayer/util/Cryptography.java) file was obtained from [here](http://migbase64.sourceforge.net/). The `BaseGameUtils`, `GameHelper` and `GameHelperUtils` classes where obtained from [Google's samples](https://github.com/playgameservices/android-basic-samples/tree/master/BasicSamples/libraries/BaseGameUtils/src/main/java/com/google/example/games/basegameutils). The [`LRUCache`](../master/core/src/com/tsanikgr/whist_multiplayer/util/LRUCache.java) was obtained from [here](https://github.com/igniterealtime/jxmpp/blob/master/jxmpp-util-cache/src/main/java/org/jxmpp/util/cache/LruCache.java).
 
 
-[`Config.java`]: ../blob/master/core/src/com/tsanikgr/whist_multiplayer/Config.java
+[`Config.java`]: ../master/core/src/com/tsanikgr/whist_multiplayer/Config.java
+[`Dealer.java`]: ../master/core/src/com/tsanikgr/whist_multiplayer/controllers/Dealer.java
+[ids.xml]: ../master/android/res/values/ids.xml
+[gradle.build]: ../master/android/build.gradle
+[`android`]: ../master/android/
+[`desktop`]: ../master/desktop/
+[`ios`]: ../master/ios/
+[`core`]: ../master/core/
+[`controller`]: ../master/core/src/com/tsanikgr/whist_multiplayer/controllers/Controller.java
+[`AppController`]: ../master/core/src/com/tsanikgr/whist_multiplayer/controllers/AppController.java
+[`IAppController`]: ../master/core/src/com/tsanikgr/whist_multiplayer/IAppController.java
+[`CompositeController`]: ../master/core/src/com/tsanikgr/whist_multiplayer/controllers/CompositeController.java
+[`Assets`]: ../master/core/src/com/tsanikgr/whist_multiplayer/controllers/Assets.java
+[`Storage`]: ../master/core/src/com/tsanikgr/whist_multiplayer/controllers/Storage.java
+[`CardController`]: ../master/core/src/com/tsanikgr/whist_multiplayer/controllers/CardController.java
+[`ScreenDirector`]: ../master/core/src/com/tsanikgr/whist_multiplayer/controllers/ScreenDirector.java
+[`View`]: ../master/core/src/com/tsanikgr/whist_multiplayer/views/View.java
+[`Stage`]: https://libgdx.badlogicgames.com/nightlies/docs/api/com/badlogic/gdx/scenes/scene2d/Stage.html
+[`ScreenController`]: ../master/core/src/com/tsanikgr/whist_multiplayer/controllers/ScreenController.java
+[`IWhistGameController`]: ../master/core/src/com/tsanikgr/whist_multiplayer/controllers/IWhistGameController.java
+[`WhistGameController`]: ../master/core/src/com/tsanikgr/whist_multiplayer/controllers/WhistGameController.java
+[`LoadingController`]: ../master/core/src/com/tsanikgr/whist_multiplayer/controllers/LoadingController.java
+[`MenuController`]: ../master/core/src/com/tsanikgr/whist_multiplayer/controllers/MenuController.java
+[`GameController`]: ../master/core/src/com/tsanikgr/whist_multiplayer/controllers/GameController.java
+[`LoadingView`]: ../master/core/src/com/tsanikgr/whist_multiplayer/views/LoadingView.java
+[`MenuScreen`]: ../master/core/src/com/tsanikgr/whist_multiplayer/views/menu/MenuScreen.java
+[`GameScreen`]: ../master/core/src/com/tsanikgr/whist_multiplayer/views/game/GameScreen.java
+[`GameStateController`]: ../master/core/src/com/tsanikgr/whist_multiplayer/controllers/GameStateController.java
+[`PlayerController`]: ../master/core/src/com/tsanikgr/whist_multiplayer/controllers/PlayerController.java
+[`BoardController`]: ../master/core/src/com/tsanikgr/whist_multiplayer/controllers/BoardController.java
+[`GameSimulator`]: ../master/core/src/com/tsanikgr/whist_multiplayer/AI/GameSimulator.java
+[`WhistExecutorService`]: ../master/core/src/com/tsanikgr/whist_multiplayer/AI/WhistExecutorService.java
+[`ThreadedGameModelPool`]: ../master/core/src/com/tsanikgr/whist_multiplayer/AI/ThreadedGameModelPool.java
+[`models`]: ../master/core/src/com/tsanikgr/whist_multiplayer/models/
+[`SimGameModel`]: ../master/core/src/com/tsanikgr/whist_multiplayer/AI/SimGameState.java
+[`google`]: ../master/android/src/com/tsanikgr/whist_multiplayer/android/google/
+[`MultiplayerMessage`]: ../master/core/src/com/tsanikgr/whist_multiplayer/models/MultiplayerMessage.java
+[`Messenger`]: ../master/android/src/com/tsanikgr/whist_multiplayer/android/google/Messenger.java
+[`IStatisticsController`]: ../master/core/src/com/tsanikgr/whist_multiplayer/IStatistics.java
+[`UserView`]: ../master/core/src/com/tsanikgr/whist_multiplayer/views/menu/UserView.java
+[`StatisticsView`]: ../master/core/src/com/tsanikgr/whist_multiplayer/views/menu/StatisticsView.java
+[`CoinsView`]: ../master/core/src/com/tsanikgr/whist_multiplayer/views/menu/CoinsView.java
+[`StatisticsModel`]: ../master/core/src/com/tsanikgr/whist_multiplayer/models/StatisticsModel.java
+[`IScreenController`]: ../master/core/src/com/tsanikgr/whist_multiplayer/IScreenController.java
+[`Screen`]: ../master/core/src/com/tsanikgr/whist_multiplayer/views/Screen.java
+[`EventListener`]: https://libgdx.badlogicgames.com/nightlies/docs/api/com/badlogic/gdx/scenes/scene2d/EventListener.html
+[`GameModel`]: ../master/core/src/com/tsanikgr/whist_multiplayer/models/GameModel.java
+[`WhistAiInterface`]: ../master/core/src/com/tsanikgr/whist_multiplayer/AI/WhistAInterface.java
+[`AbstractWhistAi`]: ../master/core/src/com/tsanikgr/whist_multiplayer/AI/AbstractWhistAI.java
+[`Action`]: https://libgdx.badlogicgames.com/nightlies/docs/api/com/badlogic/gdx/scenes/scene2d/Action.html
+[`AnimatorConfig`]: ../master/core/src/com/tsanikgr/whist_multiplayer/myactors/Animator.java
+[`Animator`]: ../master/core/src/com/tsanikgr/whist_multiplayer/myactors/Animator.java
+
+

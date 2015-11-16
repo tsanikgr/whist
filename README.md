@@ -18,7 +18,7 @@
 
 # Whist
 
-Welcome you to the GitHub page of Whist.
+Welcome to the GitHub page of Whist.
 
 Whist is a trick-taking card game with many variations. The one implemented herein is very similar to [Oh Hell](https://en.wikipedia.org/wiki/Oh_Hell).
 The Android version is currently in open alpha-testing in the [Google Play Store](goo.gl/3ISVdr). In case the link is not working for you, please [send me](mailto:ntsaoussis@gmail.com) your gmail address and I will add you to the list of testers.

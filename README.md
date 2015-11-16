@@ -1,19 +1,19 @@
 **Table of Contents**
 
-- [Whist](#)
-   - [Features](#)
-   - [About](#)
-   - [Setup instructions](#)
-- [High level overview](#)
-	- [Code Architecture](#)
-		- [Controllers](#)
-		- [Views](#)
-		- [Models](#)
-	- [AI computer opponents](#)
-	- [Multiplayer](#)
-	- [Software design pattern examples](#)
-- [Code metrics](#)
-- [Used libraries & code](#)
+- [Whist](#whist)
+   - [Features](#features)
+   - [About](#about)
+   - [Setup instructions](#setup-instructions)
+- [High level overview](#high-level-overview)
+	- [Code Architecture](#code-architecture)
+		- [Controllers](#controllers)
+		- [Views](#views)
+		- [Models](#models)
+	- [AI computer opponents](#ai-computer-opponents)
+	- [Multiplayer](#multiplayer)
+	- [Software design pattern examples](#software-design-pattern-examples)
+- [Code metrics](#code-metrics)
+- [Used libraries & code](#used-libraries--code)
 
 
 # Whist

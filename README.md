@@ -14,6 +14,8 @@ The Android version is currently in open alpha-testing in the [Google Play Store
 
 Planned future work: tests, iOS app, [app invites & deep links](https://developers.google.com/app-invites/android/), more battery efficient computer opponents, better graphics, in app purchases, and more.
 
+> **Note:** The only reason I have not yet written unit tests is because I was trying to get this out here the soonest possible. However, I definately plan to do so soon. 
+
 ### About
 
 This project started from scratch in **September of 2015** and the biggest part was complete by **mid-October**. Some chunks of code have been iterated over-and-over again during the past years, whenever I found time to experiment with Android development. However, every single line of re-used code has been revisited and (likely) refactored.
@@ -26,6 +28,16 @@ This project started from scratch in **September of 2015** and the biggest part 
 I decided to open-source my code in order to showcase my work and get valuable feedback. Below, I present a high-level overview of the app --- feel free to [contact me](mailto:ntsaoussis@gmail.com) or dig in the code for more details. My CV can be found [here](https://uk.linkedin.com/in/ntsaousis).
 
 > **Note:** Everything in here is **100% my own work, except where specifically indicated below**. This includes the UI design and all graphic assets. I am not very proud of my design skills, so please be lenient with the visual aspect of the game.
+
+### Setup instructions
+
+In case you want to build and run the project yourself, you need to:
+1. Follow the instructions from [here](https://github.com/libgdx/libgdx/wiki/Gradle-and-Eclipse), to import an existing LibGDX, gradle based project.
+2. Implement the function `getStoragePassword()` in [`Config.java`]() (e.g. by simply returning a string).
+3. Create your own implementation of card shuffling in [`Dealer.java`]() (e.g. by calling `cards.shuffle()`).
+4. Setup Google Games Services as explained [here](https://developers.google.com/games/services/console/enabling).
+5. Modify the [ids.xml]() file, with the application ID and achievement/leaderboards IDs you obtained in step (4).
+6. Modify the signing configurations in the android [`gradle.build`]() file, with your own keyAlias, keyPassword, storeFile and storePassword (both for the debug and release configurations).
 
 # High level overview
 
@@ -43,19 +55,58 @@ The structure follows the **Model View Presenter (MVP)** architecture. That said
 In the following **UML class diagrams**, many classes are ommited for brevity reasons, including all `XxxModel` classes (many are shown as fields). Moreover, only a selection of the members of each class is shown to save space. 
 
 --------
-> **Tip:** The bullet points below the class diagrams will help you navigate them with ease.
+> **Tip:** You might prefer to navigate the diagrams whilst reading the descriptions below them.
 
 --------
 
 ### Controllers
-![Diagram 1 - Controllers &#40;Presenters&#41;](https://github.com/tsanikgr/whist/blob/master/uml/overview_controllers_ai.png "Diagram 1 - Controllers &#40;Presenters&#41;")
+![Diagram 1 - Controllers (Presenters)](http://github.com/myDiagram "Diagram 1 - Controllers (Presenters)")
 
+All controllers inherit from the [`Controller`]() abstract class, which allows the communication between them.
 
+The diagram is color coded as follows:
+
+#### 1. App entry point (green)
+
+The [`AppController`]() class is the app entry point. It implements the [`IAppController`]() interface, which defines methods for the app lifecycle events (e.g. `onCreate()`, `render()`, `onDispose()` etc.).
+
+In addition, [`AppController`]() is a [`CompositeController`](), and is the **root of the controllers object graph**. In other words, all other controllers are its childern or grand-children.
+
+> **Note:** The proposed structure scheme makes it **easy to write unit tests**. Each controller can be easily swapped for a stub, allowing the independent testing of each one of them. At the same time, communication between them is easy without dependency injections.
+
+#### 2. First level controllers (blue)
+
+The name of each controller ([`Assets`](), [`Storage`](), [`CardController`]() etc.) and the members of the interfaces they implement pretty much sum up their responsibilities. 
+
+The most interesting one is the composite controller [`ScreenDirector`](). It creates the root of all [`View`]() objects: this is represented by LibGDX's [`Stage`]() object. Moreover, it creates three [`ScreenController`]()s: the [`LoadingController`](), the [`MenuController`]() and the [`GameController`](), and activates the appropriate one according to the state of the app.
+
+#### 3. Screen controllers (red)
+
+These are the **presenters** which handle the creation and the managment of their Views.
+   - The [`LoadingController`]() updates the [`LoadingView`]()
+   - The [`MenuController`]() updates the [`MenuScreen`]() and gets notified about input events.
+   - The [`GameController`]() updates the [`GameScreen`]() and gets notified about input & game events.
+   
+The [`GameController`]() delegates game actions to the concrete implementations the the [`IWhistGameController`]() interface.
+
+#### 4. Game controllers (yellow)
+
+All concrete implementations the the abstract class [`WhistGameController`]() make up the Whist-specific game controllers:
+
+   - [`GameStateController`]()
+   - [`Dealer`]()
+   - [`PlayerController`]()
+   - [`BoardController`]()
+
+> **Note:** The [`GameSimulator`](), [`WhistExecutorService`](), and [`ThreadedGameModelPool`]() are **not** controller objects. They are just there to show how the [`PlayerController`]() implements the bots.
 
 ### Views
-![Diagram 2 - Views](https://github.com/tsanikgr/whist/blob/master/uml/overview_views.png "Diagram 2 - Views")
+![Diagram 2 - Views](http://github.com/myDiagram2 "Diagram 2 - Views")
 
-LibGDX's scene2d objects.
+Views can be built synchronously or asynchronously. **A view is only built synchronously only when it is required immediately**. Otherwise, as with every other computationally expensive task, most of the work is performed on a background thread. Whenever something needs to run on the UI thread (such as openGL texture binding calls), the command software pattern is used to return to the main thread.
+
+//TODO: work in progress...
+
 
 ### Models
 
@@ -124,7 +175,7 @@ One example for each of the following software design patterns is given below.
 * #### Structural
     - **Composite**
     
-       The object graph of all `Controller`s is formed using the composite pattern. `CompositeController`s, such as the app entry point (`ApplicationController`), delegate work to their child controllers. Also, `Screen`s are composite `View`s.
+       The object graph of all `Controller`s is formed using the composite pattern. `CompositeController`s, such as the app entry point (`AppController`), delegate work to their child controllers. Also, `Screen`s are composite `View`s.
        
     - **Facade**
     

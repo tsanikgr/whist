@@ -240,7 +240,4 @@ In case you are interested, here are some of the metrics I obtain using the stat
 As already mentioned, I am using a modified version of the [StageBuilder](https://github.com/peakgames/libgdx-stagebuilder) library. The relevant code is in the [`assets`]() and [`stage_builder`]() packages. In addition, the [`Base64`]() class in the [`Cryptography.java`]() file was obtained from [here](http://migbase64.sourceforge.net/). The `BaseGameUtils`, `GameHelper` and `GameHelperUtils` classes where obtained from [Google's samples](https://github.com/playgameservices/android-basic-samples/tree/master/BasicSamples/libraries/BaseGameUtils/src/main/java/com/google/example/games/basegameutils). The [`LRUCache`]() was obtained from [here](https://github.com/igniterealtime/jxmpp/blob/master/jxmpp-util-cache/src/main/java/org/jxmpp/util/cache/LruCache.java).
 
 
-[`Config.java`]: [path]Config.java
-
-
-[path]: ../blob/master/core/src/com/tsanikgr/whist_multiplayer/
+[`Config.java`]: ../blob/master/core/src/com/tsanikgr/whist_multiplayer/Config.java

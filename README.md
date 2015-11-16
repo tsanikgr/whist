@@ -21,7 +21,7 @@
 Welcome to the GitHub page of Whist.
 
 Whist is a trick-taking card game with many variations. The one implemented herein is very similar to [Oh Hell](https://en.wikipedia.org/wiki/Oh_Hell).
-The Android version is currently in open alpha-testing in the [Google Play Store](goo.gl/3ISVdr). In case the link is not working for you, please [send me](mailto:ntsaoussis@gmail.com) your gmail address and I will add you to the list of testers.
+The Android version is currently in open alpha-testing in the [Google Play Store](https://goo.gl/3ISVdr). In case the link is not working for you, please [send me](mailto:ntsaoussis@gmail.com) your gmail address and I will add you to the list of testers.
 
 
 ### Features
@@ -53,7 +53,7 @@ In case you want to build and run the project yourself, you need to:
 
 1. Follow the instructions from [here](https://github.com/libgdx/libgdx/wiki/Gradle-and-Eclipse), to import an existing LibGDX, gradle based project.
 2. Implement the function `getStoragePassword()` in [`Config.java`], for example by simply returning a string.
-3. Create your own implementation of card shuffling in [`Dealer.java`] (e.g. by calling `cards.shuffle()`).
+3. Create your own implementation of card shuffling in [`Dealer.java`], for example by calling `cards.shuffle()`.
 4. Setup Google Games Services as explained [here](https://developers.google.com/games/services/console/enabling).
 5. Modify the [ids.xml] file, with the application ID and achievement/leaderboards IDs you obtained in step (4).
 6. Modify the signing configurations in the android [`gradle.build`] file, with your own keyAlias, keyPassword, storeFile and storePassword (both for the debug and release configurations).
@@ -87,7 +87,7 @@ The diagram is color coded as follows:
 
 #### 1. App entry point (green)
 
-The [`AppController`] class is the app entry point. It implements the [`IAppController`] interface, which defines methods for the app lifecycle events (e.g. `onCreate()`, `render()`, `onDispose()` etc.).
+The [`AppController`] class is the app entry point. It implements the [`IApplication`] interface, which defines methods for the app lifecycle events (e.g. `onCreate()`, `render()`, `onDispose()` etc.).
 
 In addition, [`AppController`] is a [`CompositeController`], and is the **root of the controllers object graph**. In other words, all other controllers are its childern or grand-children.
 
@@ -151,7 +151,7 @@ Although this algorithm is not suitable for a mobile application (... I guess us
   
 #### ... and uses Pools to reduce the frequency of garbage collections
 
-  Every time a game action is simulated, a new [`SimGameModel`] (Simulation Game State) is created. Instead of creating a new object every time, [`SimGameModel`]s are recycled whenever they are no longer required. To make matters simpler, one pool is used per thread. See [`ThreadedGameModelPool`].
+  Every time a game action is simulated, a new [`SimGameModel`] is created. Instead of creating a new object every time, [`SimGameModel`]s are recycled whenever they are no longer required. To make matters simpler, one pool is used per thread. See [`ThreadedGameModelPool`].
 
 > _Note:_ Due to the nature of the game, the number of [`SimGameModel`]s space quickly explodes, making it impossible to simulate all possible outcomes. To tackle this problem, some heuristic rules are used to limit the number of simulations per card, when dealing more than 6 to each player.
 
@@ -237,20 +237,20 @@ In case you are interested, here are some of the metrics I obtain using the stat
 
 # Used libraries & code
 
-As already mentioned, I am using a modified version of the [StageBuilder](https://github.com/peakgames/libgdx-stagebuilder) library. The relevant code is in the [`assets`](../master/core/src/com/tsanikgr/whist_multiplayer/assets/) and [`stage_builder`](../master/core/src/com/tsanikgr/whist_multiplayer/stage_builder) packages. In addition, the [`Base64`]() class in the [`Cryptography.java`](../master/core/src/com/tsanikgr/whist_multiplayer/util/Cryptography.java) file was obtained from [here](http://migbase64.sourceforge.net/). The `BaseGameUtils`, `GameHelper` and `GameHelperUtils` classes where obtained from [Google's samples](https://github.com/playgameservices/android-basic-samples/tree/master/BasicSamples/libraries/BaseGameUtils/src/main/java/com/google/example/games/basegameutils). The [`LRUCache`](../master/core/src/com/tsanikgr/whist_multiplayer/util/LRUCache.java) was obtained from [here](https://github.com/igniterealtime/jxmpp/blob/master/jxmpp-util-cache/src/main/java/org/jxmpp/util/cache/LruCache.java).
+As already mentioned, I am using a modified version of the [StageBuilder](https://github.com/peakgames/libgdx-stagebuilder) library. The relevant code is in the [`assets`](../master/core/src/com/tsanikgr/whist_multiplayer/assets/) and [`stage_builder`](../master/core/src/com/tsanikgr/whist_multiplayer/stage_builder) packages. In addition, the [`Base64`](../master/core/src/com/tsanikgr/whist_multiplayer/util/Cryptography.java) class in the [`Cryptography.java`](../master/core/src/com/tsanikgr/whist_multiplayer/util/Cryptography.java) file was obtained from [here](http://migbase64.sourceforge.net/). The `BaseGameUtils`, `GameHelper` and `GameHelperUtils` classes where obtained from [Google's samples](https://github.com/playgameservices/android-basic-samples/tree/master/BasicSamples/libraries/BaseGameUtils/src/main/java/com/google/example/games/basegameutils). The [`LRUCache`](../master/core/src/com/tsanikgr/whist_multiplayer/util/LRUCache.java) was obtained from [here](https://github.com/igniterealtime/jxmpp/blob/master/jxmpp-util-cache/src/main/java/org/jxmpp/util/cache/LruCache.java).
 
 
 [`Config.java`]: ../master/core/src/com/tsanikgr/whist_multiplayer/Config.java
 [`Dealer.java`]: ../master/core/src/com/tsanikgr/whist_multiplayer/controllers/Dealer.java
 [ids.xml]: ../master/android/res/values/ids.xml
-[gradle.build]: ../master/android/build.gradle
+[`gradle.build`]: ../master/android/build.gradle
 [`android`]: ../master/android/
 [`desktop`]: ../master/desktop/
 [`ios`]: ../master/ios/
 [`core`]: ../master/core/
 [`controller`]: ../master/core/src/com/tsanikgr/whist_multiplayer/controllers/Controller.java
 [`AppController`]: ../master/core/src/com/tsanikgr/whist_multiplayer/controllers/AppController.java
-[`IAppController`]: ../master/core/src/com/tsanikgr/whist_multiplayer/IAppController.java
+[`IApplication`]: ../master/core/src/com/tsanikgr/whist_multiplayer/IAppController.java
 [`CompositeController`]: ../master/core/src/com/tsanikgr/whist_multiplayer/controllers/CompositeController.java
 [`Assets`]: ../master/core/src/com/tsanikgr/whist_multiplayer/controllers/Assets.java
 [`Storage`]: ../master/core/src/com/tsanikgr/whist_multiplayer/controllers/Storage.java
@@ -270,15 +270,16 @@ As already mentioned, I am using a modified version of the [StageBuilder](https:
 [`GameStateController`]: ../master/core/src/com/tsanikgr/whist_multiplayer/controllers/GameStateController.java
 [`PlayerController`]: ../master/core/src/com/tsanikgr/whist_multiplayer/controllers/PlayerController.java
 [`BoardController`]: ../master/core/src/com/tsanikgr/whist_multiplayer/controllers/BoardController.java
+[`Dealer`]: ../master/core/src/com/tsanikgr/whist_multiplayer/controllers/Dealer.java
 [`GameSimulator`]: ../master/core/src/com/tsanikgr/whist_multiplayer/AI/GameSimulator.java
 [`WhistExecutorService`]: ../master/core/src/com/tsanikgr/whist_multiplayer/AI/WhistExecutorService.java
 [`ThreadedGameModelPool`]: ../master/core/src/com/tsanikgr/whist_multiplayer/AI/ThreadedGameModelPool.java
 [`models`]: ../master/core/src/com/tsanikgr/whist_multiplayer/models/
-[`SimGameModel`]: ../master/core/src/com/tsanikgr/whist_multiplayer/AI/SimGameState.java
+[`SimGameModel`]: ../master/core/src/com/tsanikgr/whist_multiplayer/AI/ThreadedGameModelPool.java
 [`google`]: ../master/android/src/com/tsanikgr/whist_multiplayer/android/google/
 [`MultiplayerMessage`]: ../master/core/src/com/tsanikgr/whist_multiplayer/models/MultiplayerMessage.java
 [`Messenger`]: ../master/android/src/com/tsanikgr/whist_multiplayer/android/google/Messenger.java
-[`IStatisticsController`]: ../master/core/src/com/tsanikgr/whist_multiplayer/IStatistics.java
+[`IStatistics`]: ../master/core/src/com/tsanikgr/whist_multiplayer/IStatistics.java
 [`UserView`]: ../master/core/src/com/tsanikgr/whist_multiplayer/views/menu/UserView.java
 [`StatisticsView`]: ../master/core/src/com/tsanikgr/whist_multiplayer/views/menu/StatisticsView.java
 [`CoinsView`]: ../master/core/src/com/tsanikgr/whist_multiplayer/views/menu/CoinsView.java

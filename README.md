@@ -52,7 +52,7 @@ I decided to open-source my code in order to showcase my work and get valuable f
 In case you want to build and run the project yourself, you need to:
 
 1. Follow the instructions from [here](https://github.com/libgdx/libgdx/wiki/Gradle-and-Eclipse), to import an existing LibGDX, gradle based project.
-2. Implement the function `getStoragePassword()` in [`Config.java`] (e.g. by simply returning a string).
+2. Implement the function `getStoragePassword()` in [`Config.java`], for example by simply returning a string.
 3. Create your own implementation of card shuffling in [`Dealer.java`]() (e.g. by calling `cards.shuffle()`).
 4. Setup Google Games Services as explained [here](https://developers.google.com/games/services/console/enabling).
 5. Modify the [ids.xml]() file, with the application ID and achievement/leaderboards IDs you obtained in step (4).

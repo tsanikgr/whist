@@ -40,9 +40,9 @@ public class Config {
 		SOUND_ON_ERROR = isDebug;
 	}
 
-	/** REMOVE THE FOLLOWING BEFORE PUBLISHING ONLINE: */
 	private static final byte[] DEFAULT_SALT = {
-			/* hidden implementation */ };
+			(byte) 0xc8, (byte) 0x73, (byte) 0x41, (byte) 0x8c,
+			(byte) 0x7e, (byte) 0xd8, (byte) 0xee, (byte) 0x89 };
 
 	public static byte[] getDefaultSalt(){
 		byte[] copy = new byte[DEFAULT_SALT.length];
@@ -50,10 +50,9 @@ public class Config {
 		return copy;
 	}
 
+	public static String getIvSeparator(){return "iv!n!";	}
+
 	private static String getStoragePassword(){
-		/* hidden implementation */
-	}
-	public static String getIvSeparator(){
 		/* hidden implementation */
 	}
 

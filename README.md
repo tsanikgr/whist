@@ -32,7 +32,7 @@ The Android version is currently in open alpha-testing in the [Google Play Store
 
 Planned future work: tests, iOS app, [app invites & deep links](https://developers.google.com/app-invites/android/), more battery efficient computer opponents, better graphics, in app purchases, and more.
 
-> **Note:** The only reason I have not yet written unit tests is because I was trying to get this out here the soonest possible. However, I definately plan to do so soon. 
+> **Note:** The only reason I have not yet written unit tests is because I was trying to get this out here the soonest possible. However, I definitely plan to do so soon. 
 
 ### About
 
@@ -64,14 +64,14 @@ The app is built on top of the [LibGDX](https://github.com/libGDX/libGDX) game d
 with an iOS version planned for the future. Platform specific code is placed in the [`android`](), [`desktop`]() and [`ios`]() directories, whereas all platform independent code is
 placed in the [`core`]() package. It also uses a customised version (to fit my own needs) of the [StageBuilder](https://github.com/peakgames/libgdx-stagebuilder) library, a project for building LibGDX stages (screens) from xml files. Please have a look at my other [repository](https://github.com/tsanikgr/illustrator-to-android), where I supply an Adobe Illustrator javascript which automatically exports graphical assets and .xml files for use with StageBuilder. Once the Illustrator file is updated, the UI of the app can be updated using two clicks, with no code modification needed whatsoever.
 
-> One of the primary goals when I decided to write this game from scratch, was to create my own library, tools and workflows. This would allow me to quickly build new games in the future. As such, my top priorities were **code re-usability, maintainability, testability and minimal dependencies**.
+> One of the primary goals when I decided to write this game from scratch, was to create my own library, tools and work-flows. This would allow me to quickly build new games in the future. As such, my top priorities were **code re-usability, maintainability, testability and minimal dependencies**.
 
 
 
 ## Code Architecture
 The structure follows the **Model View Presenter (MVP)** architecture. That said, please do not be confused: all _Presenters_ extend the `Controller` abstract class, and follow the `XxxController` naming convention (after the Model View Controller (MVC) architecture which is very similar).
 
-In the following **UML class diagrams**, many classes are ommited for brevity reasons, including all `XxxModel` classes (many are shown as fields). Moreover, only a selection of the members of each class is shown to save space. 
+In the following **UML class diagrams**, many classes are omitted for brevity reasons, including all `XxxModel` classes (many are shown as fields). Moreover, only a selection of the members of each class is shown to save space. 
 
 --------
 > **Tip:** You might prefer to navigate the diagrams whilst reading the descriptions below them.
@@ -89,7 +89,7 @@ The diagram is color coded as follows:
 
 The [`AppController`]() class is the app entry point. It implements the [`IAppController`]() interface, which defines methods for the app lifecycle events (e.g. `onCreate()`, `render()`, `onDispose()` etc.).
 
-In addition, [`AppController`]() is a [`CompositeController`](), and is the **root of the controllers object graph**. In other words, all other controllers are its childern or grand-children.
+In addition, [`AppController`]() is a [`CompositeController`](), and is the **root of the controllers object graph**. In other words, all other controllers are its children or grand-children.
 
 > **Note:** The proposed structure scheme makes it **easy to write unit tests**. Each controller can be easily swapped for a stub, allowing the independent testing of each one of them. At the same time, communication between them is easy without dependency injections.
 
@@ -101,7 +101,7 @@ The most interesting one is the composite controller [`ScreenDirector`](). It cr
 
 #### 3. Screen controllers (red)
 
-These are the **presenters** which handle the creation and the managment of their Views.
+These are the **presenters** which handle the creation and the management of their Views.
    - The [`LoadingController`]() updates the [`LoadingView`]()
    - The [`MenuController`]() updates the [`MenuScreen`]() and gets notified about input events.
    - The [`GameController`]() updates the [`GameScreen`]() and gets notified about input & game events.
@@ -129,7 +129,7 @@ Views can be built synchronously or asynchronously. **A view is only built synch
 
 ### Models
 
-Models expose methods to update and querry their internal states, having no business logic (appart from some input validation when updating). They can be serialised to store them or transmit them through network calls. Most of them are placed in the `models` package.
+Models expose methods to update and query their internal states, having no business logic (apart from some input validation when updating). They can be serialised to store them or transmit them through network calls. Most of them are placed in the `models` package.
 
 ## AI computer opponents
 
@@ -147,7 +147,7 @@ Although this algorithm is not suitable for a mobile application (... I guess us
   
 #### ... and recursive
 
-  The game is simulated recursively. Whenever a recursive call is made, a read lock is obtained to see whether there are any idling threads. If so, the caller tries to obtain a write lock on the number of running threads: if successfull, the number of active threads is incremented, and the simulation continues as a new task on the new thread. Otherwise the current thread continues normally.
+  The game is simulated recursively. Whenever a recursive call is made, a read lock is obtained to see whether there are any idling threads. If so, the caller tries to obtain a write lock on the number of running threads: if successful, the number of active threads is incremented, and the simulation continues as a new task on the new thread. Otherwise the current thread continues normally.
   
 #### ... and uses Pools to reduce the frequency of garbage collections
 
@@ -211,7 +211,7 @@ One example for each of the following software design patterns is given below.
     
     - **Builder**
     
-       A variation of the builder pattern is used for the circular reveal animations. `Animators` provide an `AnimatorConfig` object, which can be modified to customise the animation. However, `AnimatorConfig` objects are not builders _per se_, since they are members of `Animators` instead of handling their creation. Nevetherless, they separate the representation of `Animators` from their creation.
+       A variation of the builder pattern is used for the circular reveal animations. `Animators` provide an `AnimatorConfig` object, which can be modified to customise the animation. However, `AnimatorConfig` objects are not builders _per se_, since they are members of `Animators` instead of handling their creation. Nevertheless, they separate the representation of `Animators` from their creation.
        
     - **Prototype**
     

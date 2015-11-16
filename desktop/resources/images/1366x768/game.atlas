@@ -6,14 +6,14 @@ filter: Linear,Linear
 repeat: none
 back
   rotate: false
-  xy: 244, 120
+  xy: 1612, 1800
   size: 80, 80
   orig: 80, 80
   offset: 0, 0
   index: -1
 back_Down
   rotate: false
-  xy: 1368, 1210
+  xy: 1960, 1955
   size: 80, 80
   orig: 80, 80
   offset: 0, 0
@@ -34,14 +34,14 @@ button_score_arrow
   index: -1
 chat
   rotate: false
-  xy: 326, 120
+  xy: 244, 120
   size: 80, 80
   orig: 80, 80
   offset: 0, 0
   index: -1
 chat_Down
   rotate: false
-  xy: 408, 120
+  xy: 1368, 1210
   size: 80, 80
   orig: 80, 80
   offset: 0, 0
@@ -70,57 +70,57 @@ game_layer_bb
 label_p00
   rotate: false
   xy: 1612, 1882
-  size: 361, 153
-  orig: 361, 153
-  offset: 0, 0
-  index: -1
-label_p11
-  rotate: false
-  xy: 1612, 1882
-  size: 361, 153
-  orig: 361, 153
-  offset: 0, 0
-  index: -1
-label_p22
-  rotate: false
-  xy: 1612, 1882
-  size: 361, 153
-  orig: 361, 153
+  size: 346, 153
+  orig: 346, 153
   offset: 0, 0
   index: -1
 label_p00_Disabled
   rotate: false
-  xy: 607, 202
-  size: 361, 153
-  orig: 361, 153
+  xy: 592, 202
+  size: 346, 153
+  orig: 346, 153
   offset: 0, 0
   index: -1
 label_p11_Disabled
   rotate: false
-  xy: 607, 202
-  size: 361, 153
-  orig: 361, 153
+  xy: 592, 202
+  size: 346, 153
+  orig: 346, 153
   offset: 0, 0
   index: -1
 label_p22_Disabled
   rotate: false
-  xy: 607, 202
-  size: 361, 153
-  orig: 361, 153
+  xy: 592, 202
+  size: 346, 153
+  orig: 346, 153
+  offset: 0, 0
+  index: -1
+label_p33_Disabled
+  rotate: false
+  xy: 592, 202
+  size: 346, 153
+  orig: 346, 153
+  offset: 0, 0
+  index: -1
+label_p11
+  rotate: false
+  xy: 244, 202
+  size: 346, 153
+  orig: 346, 153
+  offset: 0, 0
+  index: -1
+label_p22
+  rotate: false
+  xy: 244, 202
+  size: 346, 153
+  orig: 346, 153
   offset: 0, 0
   index: -1
 label_p33
   rotate: false
   xy: 244, 202
-  size: 361, 153
-  orig: 361, 153
-  offset: 0, 0
-  index: -1
-label_p33_Disabled
-  rotate: false
-  xy: 1612, 1727
-  size: 361, 153
-  orig: 361, 153
+  size: 346, 153
+  orig: 346, 153
   offset: 0, 0
   index: -1
 lb
@@ -132,21 +132,21 @@ lb
   index: -1
 pl_p0_bausen
   rotate: false
-  xy: 1975, 1951
+  xy: 1450, 1206
   size: 65, 84
   orig: 65, 84
   offset: 0, 0
   index: -1
 resign
   rotate: false
-  xy: 490, 120
+  xy: 1694, 1800
   size: 80, 80
   orig: 80, 80
   offset: 0, 0
   index: -1
 resign_Down
   rotate: false
-  xy: 572, 120
+  xy: 326, 120
   size: 80, 80
   orig: 80, 80
   offset: 0, 0
@@ -188,7 +188,7 @@ start
   index: -1
 start_Down
   rotate: false
-  xy: 970, 206
+  xy: 940, 206
   size: 148, 149
   orig: 148, 149
   offset: 0, 0

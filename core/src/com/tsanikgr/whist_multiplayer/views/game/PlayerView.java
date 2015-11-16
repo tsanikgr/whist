@@ -65,13 +65,13 @@ public class PlayerView extends View {
 		nameLabel = (MyTextButton)nameLabelWrap.getChildren().get(0);
 		nameLabel.setTouchable(Touchable.disabled);
 		nameLabel.setMaxCharacters(10);
-		if (playerIndex == 3) {
-			nameLabel.padRight(nameLabel.getWidth()/3.7f);
-			nameLabel.padLeft(nameLabel.getWidth()/15f);
-		} else {
+//		if (playerIndex == 3) {
+//			nameLabel.padRight(nameLabel.getWidth()/3.7f);
+//			nameLabel.padLeft(nameLabel.getWidth()/15f);
+//		} else {
 			nameLabel.padLeft(nameLabel.getWidth()/3.7f);
-			nameLabel.padRight(nameLabel.getWidth()/15f);
-		}
+			nameLabel.padRight(nameLabel.getWidth()/20f);
+//		}
 		nameLabel.getLabel().setAlignment(Align.center);
 		Geometry.fixOrigin(nameLabelWrap);
 
@@ -190,23 +190,39 @@ public class PlayerView extends View {
 	private void animateWonBausen(int declared, int complete, boolean reset) {
 		if (reset) lastUpdated = -1;
 
+		float dx = 0, dy = 0;
+		switch (playerIndex) {
+			case 0:
+				dx = 0f; dy = 60f;
+				break;
+			case 1:
+				dx = 60f; dy = 0f;
+				break;
+			case 2:
+				dx = 0f; dy = -60f;
+				break;
+			case 3:
+				dx = -60f; dy = 0f;
+				break;
+		}
+
 		Actor actor;
 		for (int b = 0 ; b < bausen.size() ; b++) {
 			actor = bausen.getChildren().get(b);
 			if (b >= complete) {
-//				actor.addAction(sequence(delay(1f),alpha(0.25f)));
-				actor.addAction(sequence(delay(1f), Actions.color(BAUSEN_COLOUR_INCOMPLETE)));
+//				actor.addAction(sequence(delay(0.5f),alpha(0.25f)));
+				actor.addAction(sequence(delay(0.5f), Actions.color(BAUSEN_COLOUR_INCOMPLETE)));
 			} else {
-//				actor.addAction(sequence(delay(1f),alpha(1.0f)));
-//				actor.addAction(sequence(delay(1f), Actions.color(BAUSEN_COLOUR_ACHIEVED)));
+//				actor.addAction(sequence(delay(0.5f),alpha(1.0f)));
+//				actor.addAction(sequence(delay(0.5f), Actions.color(BAUSEN_COLOUR_ACHIEVED)));
 			}
 			if (b == lastUpdated && b < declared) {
-				actor.addAction(sequence(delay(1f), Actions.moveBy(0f, 30f)));
-				actor.addAction(sequence(delay(1f), Actions.moveBy(0f, -30f, 1.8f, Interpolation.bounceOut)));
-				actor.addAction(sequence(delay(1f), Actions.color(BAUSEN_COLOUR_ACHIEVED)));
+				actor.addAction(sequence(delay(0.5f), Actions.moveBy(dx, dy)));
+				actor.addAction(sequence(delay(0.5f), Actions.moveBy(-dx, -dy, 2f, Interpolation.bounceOut)));
+				actor.addAction(sequence(delay(0.5f), Actions.color(BAUSEN_COLOUR_ACHIEVED)));
 
-//				actor.addAction(sequence(delay(1.5f), Actions.scaleTo(1.5f, 1.5f, 0.75f, Interpolation.sineIn)));
-//				actor.addAction(sequence(delay(2.25f), Actions.scaleTo(1f, 1f, 0.75f, Interpolation.sineOut)));
+				actor.addAction(sequence(delay(0.5f), Actions.scaleTo(3f, 3f)));
+				actor.addAction(sequence(delay(0.5f), Actions.scaleTo(1f, 1f, 0.75f, Interpolation.sineOut)));
 			}
 		}
 		lastUpdated++;
@@ -244,29 +260,49 @@ public class PlayerView extends View {
 			float dx = bausenPrototype.getWidth()*(1-overlap);
 			float offset = -(dx *(float)(total-1) + bausenPrototype.getWidth()) / 2f;
 
+			float adx = 0, ady = 0;
+			switch (playerIndex) {
+				case 0:
+					adx = 0f; ady = 60f;
+					break;
+				case 1:
+					adx = 60f; ady = 0f;
+					break;
+				case 2:
+					adx = 0f; ady = -60f;
+					break;
+				case 3:
+					adx = -60f; ady = 0f;
+					break;
+			}
+
 			if (reset) bausen.clearChildren();
 			for (int b = 0; b < total; b++) {
 				if (b < bausen.size()) i = bausen.getChildren().get(b);
 				else {
 					i = MyImage.fromPrototype(bausenPrototype);
 					bausen.addActor(i);
-					i.setPosition(0f,0f);
+					i.setPosition(0f, 0f);
+					Geometry.fixOrigin(i);
 				}
 
 				if (reset) {
 					i.setColor(BAUSEN_COLOUR_INCOMPLETE);
 					i.setPosition(0f, 0f);
-					i.addAction(Actions.moveBy(offset, 0f, 1.8f, Interpolation.elasticOut));
+					i.addAction(Actions.delay(0.5f,Actions.moveBy(offset, 0f, 2.5f, Interpolation.elasticOut)));
 					offset += dx;
 				} else {
 					if (b == total - 1) {
 						i.setVisible(false);
-						i.setPosition(offset + b*dx, 30f);
-						i.addAction(sequence(delay(1f), Actions.color(BAUSEN_COLOUR_WRONG)));
-						i.addAction(sequence(delay(1f), Actions.visible(true)));
-						i.addAction(Actions.sequence(Actions.delay(1f), Actions.moveBy(0f, -30f, 1.8f, Interpolation.bounceOut)));
+						i.setPosition(offset + b*dx + adx, ady);
+						i.addAction(sequence(delay(0.5f), Actions.color(BAUSEN_COLOUR_WRONG)));
+						i.addAction(sequence(delay(0.5f), Actions.visible(true)));
+						i.addAction(Actions.sequence(Actions.delay(0.5f), Actions.moveBy(-adx, -ady, 2f, Interpolation.bounceOut)));
+
+						i.addAction(sequence(delay(0.5f), Actions.scaleTo(3f, 3f)));
+						i.addAction(sequence(delay(0.5f), Actions.scaleTo(1f, 1f, 0.75f, Interpolation.sineOut)));
 					} else {
-						i.addAction(Actions.sequence(delay(1f), Actions.moveBy(-dx/2.0f, 0f, 1.8f, Interpolation.exp10Out)));
+						i.addAction(Actions.sequence(delay(0.5f), Actions.moveBy(-dx/2.0f, 0f, 1.8f, Interpolation.exp10Out)));
 					}
 				}
 			}

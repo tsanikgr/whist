@@ -70,57 +70,57 @@ game_layer_bb
 label_p00
   rotate: false
   xy: 0, 0
-  size: 508, 215
-  orig: 508, 215
-  offset: 0, 0
-  index: -1
-label_p11
-  rotate: false
-  xy: 0, 0
-  size: 508, 215
-  orig: 508, 215
-  offset: 0, 0
-  index: -1
-label_p22
-  rotate: false
-  xy: 0, 0
-  size: 508, 215
-  orig: 508, 215
+  size: 487, 215
+  orig: 487, 215
   offset: 0, 0
   index: -1
 label_p00_Disabled
   rotate: false
-  xy: 1020, 0
-  size: 508, 215
-  orig: 508, 215
+  xy: 1467, 627
+  size: 487, 215
+  orig: 487, 215
   offset: 0, 0
   index: -1
 label_p11_Disabled
   rotate: false
-  xy: 1020, 0
-  size: 508, 215
-  orig: 508, 215
+  xy: 1467, 627
+  size: 487, 215
+  orig: 487, 215
   offset: 0, 0
   index: -1
 label_p22_Disabled
   rotate: false
-  xy: 1020, 0
-  size: 508, 215
-  orig: 508, 215
-  offset: 0, 0
-  index: -1
-label_p33
-  rotate: false
-  xy: 510, 0
-  size: 508, 215
-  orig: 508, 215
+  xy: 1467, 627
+  size: 487, 215
+  orig: 487, 215
   offset: 0, 0
   index: -1
 label_p33_Disabled
   rotate: false
-  xy: 1530, 627
-  size: 508, 215
-  orig: 508, 215
+  xy: 1467, 627
+  size: 487, 215
+  orig: 487, 215
+  offset: 0, 0
+  index: -1
+label_p11
+  rotate: false
+  xy: 489, 0
+  size: 487, 215
+  orig: 487, 215
+  offset: 0, 0
+  index: -1
+label_p22
+  rotate: false
+  xy: 978, 0
+  size: 487, 215
+  orig: 487, 215
+  offset: 0, 0
+  index: -1
+label_p33
+  rotate: false
+  xy: 978, 0
+  size: 487, 215
+  orig: 487, 215
   offset: 0, 0
   index: -1
 lb
@@ -174,7 +174,7 @@ start
   index: -1
 start_Down
   rotate: false
-  xy: 1313, 633
+  xy: 1467, 24
   size: 208, 209
   orig: 208, 209
   offset: 0, 0

@@ -62,6 +62,7 @@ public class MyImage extends Image implements MaskInterface {
 		image.setScaleX(imagePrototype.getScaleX());
 		image.setScaleY(imagePrototype.getScaleY());
 		image.setRotation(imagePrototype.getRotation());
+		image.setOrigin(imagePrototype.getOriginX(), imagePrototype.getOriginY());
 		return image;
 	}
 }

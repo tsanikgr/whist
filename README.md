@@ -61,7 +61,7 @@ In the following **UML class diagrams**, many classes are ommited for brevity re
 --------
 
 ### Controllers
-![Diagram 1 - Controllers (Presenters)](http://github.com/myDiagram "Diagram 1 - Controllers (Presenters)")
+![Diagram 1 - Controllers (Presenters)](https://github.com/tsanikgr/whist/blob/master/uml/overview_controllers_ai.png "Diagram 1 - Controllers (Presenters)")
 
 All controllers inherit from the [`Controller`]() abstract class, which allows the communication between them.
 
@@ -102,7 +102,7 @@ All concrete implementations the the abstract class [`WhistGameController`]() ma
 > **Note:** The [`GameSimulator`](), [`WhistExecutorService`](), and [`ThreadedGameModelPool`]() are **not** controller objects. They are just there to show how the [`PlayerController`]() implements the bots.
 
 ### Views
-![Diagram 2 - Views](http://github.com/myDiagram2 "Diagram 2 - Views")
+![Diagram 2 - Views](https://github.com/tsanikgr/whist/blob/master/uml/overview_views.png "Diagram 2 - Views")
 
 Views can be built synchronously or asynchronously. **A view is only built synchronously only when it is required immediately**. Otherwise, as with every other computationally expensive task, most of the work is performed on a background thread. Whenever something needs to run on the UI thread (such as openGL texture binding calls), the command software pattern is used to return to the main thread.
 

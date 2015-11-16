@@ -118,7 +118,7 @@ public class Cryptography implements ICrypto {
 	private CryptStorage encrypt(byte[] cleartext) {
 		try {
 			cipher.init(Cipher.ENCRYPT_MODE, secretKey);
-			return new CryptStorage(cipher.getParameters().getParameterSpec(IvParameterSpec.class).getIV(), cipher.doFinal(cleartext));
+			return new CryptStorage(cipher.getParameters().getParameterSpec(IvParameterSpec.class).getIV(), cipher.doFinal(cleartext), ivSeparator);
 		} catch (InvalidKeyException | InvalidParameterSpecException | IllegalBlockSizeException | BadPaddingException e) {
 			log.e(e).append("Failed to encrypt.").print();
 			return null;
@@ -146,9 +146,10 @@ public class Cryptography implements ICrypto {
 		private byte[] ciphertext = null;
 
 		//called when encryption is just done
-		private CryptStorage(byte[] iv, byte[] ciphertext) {
+		private CryptStorage(byte[] iv, byte[] ciphertext, String ivSeparator) {
 			this.iv = iv;
 			this.ciphertext = ciphertext;
+			this.ivSeparator = ivSeparator;
 		}
 
 		//called when creating it from a text file that contains: iv + separator + encrypted text

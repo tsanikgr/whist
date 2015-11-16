@@ -79,8 +79,13 @@ public class BausenDialer extends MyGroup {
 		this.notAllowed = notAllowed;
 		this.maxBausen = Math.min(round,13);
 
-		if (notAllowed == -1) notAllowedLabel.setVisible(false);
-		else notAllowedLabel.setY(notAllowed * dy - dyNotAllowed);
+		if (notAllowed == -1) {
+			notAllowedLabel.setVisible(false);
+			if (getSelection() < 0 || getSelection() > round) setSelection(0);
+		} else {
+			notAllowedLabel.setY(notAllowed * dy - dyNotAllowed);
+			setSelection(notAllowed);
+		}
 
 		listener.init(maxBausen);
 	}
@@ -121,6 +126,10 @@ public class BausenDialer extends MyGroup {
 	public int getSelection() {
 		float pos = Math.abs((numbers.getY() - prototype.getY()) / dy);
 		return Math.round(pos);
+	}
+	public void setSelection(int selection) {
+		if (getSelection() == selection) return;
+		numbers.addAction(Actions.moveTo(numbers.getX(), - selection * dy + prototype.getY(),0.5f,Interpolation.pow2));
 	}
 
 	public void highLightNotAllowed() {

@@ -163,7 +163,7 @@ public class GameController extends ScreenController implements IGameController{
 		screen.setRound(getState().getRound());
 		board.reset();
 		animateDeclareView();
-		screen.updateDeclareView(gameModel(), getAttou(), gameStateController.getRestriction());
+//		screen.updateDeclareView(gameModel(), getAttou(), gameStateController.getRestriction());
 		return true;
 	}
 
@@ -246,7 +246,7 @@ public class GameController extends ScreenController implements IGameController{
 
 	private void onLastPlayerDeclared(){
 		gameStateController.onLastPlayerDeclared();
-		screen.updateDeclareView(gameModel(), getAttou(), gameStateController.getRestriction());
+		screen.updateDeclareView(gameModel(), getAttou(), -1);
 		hideDeclareView();
 		newTrick(getState().getTrickFirstPlayer());
 	}

@@ -32,7 +32,7 @@ The Android version is currently in open alpha-testing in the [Google Play Store
 
 Planned future work: tests, iOS app, [app invites & deep links](https://developers.google.com/app-invites/android/), more battery efficient computer opponents, better graphics, in app purchases, and more.
 
-> **Note:** The only reason I have not yet written unit tests is because I was trying to get this out here the soonest possible. However, I definately plan to do so soon. 
+> **Note:** The only reason I have not yet written unit tests is because I was trying to get this out here the soonest possible. However, I definitely plan to do so soon. 
 
 ### About
 
@@ -71,7 +71,7 @@ placed in the [`core`] package. It also uses a customised version (to fit my own
 ## Code Architecture
 The structure follows the **Model View Presenter (MVP)** architecture. That said, please do not be confused: all _Presenters_ extend the [`Controller`] abstract class, and follow the `XxxController` naming convention (after the Model View Controller (MVC) architecture which is very similar).
 
-In the following **UML class diagrams**, many classes are ommited for brevity reasons, including all `XxxModel` classes (many are shown as fields). Moreover, only a selection of the members of each class is shown to save space. 
+In the following **UML class diagrams**, many classes are omitted for brevity reasons, including all `XxxModel` classes (many are shown as fields). Moreover, only a selection of the members of each class is shown to save space. 
 
 --------
 > **Tip:** You might prefer to navigate the diagrams whilst reading the descriptions below them.
@@ -89,7 +89,7 @@ The diagram is color coded as follows:
 
 The [`AppController`] class is the app entry point. It implements the [`IApplication`] interface, which defines methods for the app lifecycle events (e.g. `onCreate()`, `render()`, `onDispose()` etc.).
 
-In addition, [`AppController`] is a [`CompositeController`], and is the **root of the controllers object graph**. In other words, all other controllers are its childern or grand-children.
+In addition, [`AppController`] is a [`CompositeController`], and is the **root of the controllers object graph**. In other words, all other controllers are its children or grand-children.
 
 > **Note:** The proposed structure scheme makes it **easy to write unit tests**. Each controller can be easily swapped for a stub, allowing the independent testing of each one of them. At the same time, communication between them is easy without dependency injections.
 
@@ -101,7 +101,7 @@ The most interesting one is the composite controller [`ScreenDirector`]. It crea
 
 #### 3. Screen controllers (red)
 
-These are the **presenters** which handle the creation and the managment of their Views.
+These are the **presenters** which handle the creation and the management of their Views.
    - The [`LoadingController`] updates the [`LoadingView`]
    - The [`MenuController`] updates the [`MenuScreen`] and gets notified about input events.
    - The [`GameController`] updates the [`GameScreen`] and gets notified about input & game events.
@@ -122,14 +122,27 @@ All concrete implementations the the abstract class [`WhistGameController`] make
 ### Views
 ![Diagram 2 - Views](https://github.com/tsanikgr/whist/blob/master/uml/overview_views.png "Diagram 2 - Views")
 
-Views can be built synchronously or asynchronously. **A view is only built synchronously only when it is required immediately**. Otherwise, as with every other computationally expensive task, most of the work is performed on a background thread. Execution returns to the UI thread using the command software design pattern whenever required (e.g. for openGL texture binding calls).
+All UI elements derive from LibGDX's scene2d [`Actor`] class, a graph node that know how to draw itself on the screen.
 
-//TODO: work in progress...
+> _LibGDX's [scene2d](https://github.com/libgdx/libgdx/wiki/Scene2d) "is a 2D scene graph for building applications and UIs using a hierarchy of actors"_
 
+[`View`]s are composite actors (they extend [`Group`]). They can be built synchronously or asynchronously from [xml layout files] using [`StageBuilder`]. **A view is only built synchronously only when it is required immediately**. Otherwise, as with every other computationally expensive task, most of the work is performed on a background thread. Execution returns to the UI thread using the command software design pattern whenever required (e.g. for openGL texture binding calls).
+
+##### Screens
+
+[`Screen`]s are composite [`View`]s. They group UI elements expected to be shown together --- their names are self-explanatory: [`MenuScreen`] and [`GameScreen`]. 
+
+In addition:
+   - they are [`View`] factories: Given the view's .xml filenames, the instantiate the appropriate sub-classes of [`View`].
+   - they manage the lifecycle of all the [`View`]s they construct
+   - they are Facades to the [`IScreenController`]s. Most of the communication between views and presenters goes through them.
+
+
+In the UML class diagram, [`View`]s created and managed by the [`MenuScreen`] are shown in purple. Those managed by the [`GameScreen`] are shown in red.
 
 ### Models
 
-Models expose methods to update and querry their internal states, having no business logic (appart from some input validation when updating). They can be serialised to store them or transmit them through network calls. Most of them are placed in the [`models`] package.
+Models expose methods to update and query their internal states, having no business logic (apart from some input validation when updating). They can be serialised to store them or transmit them through network calls. Most of them are placed in the [`models`] package.
 
 ## AI computer opponents
 
@@ -147,7 +160,7 @@ Although this algorithm is not suitable for a mobile application (... I guess us
   
 #### ... and recursive
 
-  The game is simulated recursively. Whenever a recursive call is made, a read lock is obtained to see whether there are any idling threads. If so, the caller tries to obtain a write lock on the number of running threads: if successfull, the number of active threads is incremented, and the simulation continues as a new task on the new thread. Otherwise the current thread continues normally.
+  The game is simulated recursively. Whenever a recursive call is made, a read lock is obtained to see whether there are any idling threads. If so, the caller tries to obtain a write lock on the number of running threads: if successful, the number of active threads is incremented, and the simulation continues as a new task on the new thread. Otherwise the current thread continues normally.
   
 #### ... and uses Pools to reduce the frequency of garbage collections
 
@@ -211,7 +224,7 @@ One example for each of the following software design patterns is given below.
     
     - **Builder**
     
-       A variation of the builder pattern is used for the circular reveal animations. [`Animators`] provide an [`AnimatorParams`] object, which can be modified to customise the animation. However, [`AnimatorParams`] objects are not builders _per se_, since they are members of [`Animator`]s instead of handling their creation. Nevetherless, they separate the representation of [`Animator`]s from their creation.
+       A variation of the builder pattern is used for the circular reveal animations. [`Animators`] provide an [`AnimatorParams`] object, which can be modified to customise the animation. However, [`AnimatorParams`] objects are not builders _per se_, since they are members of [`Animator`]s instead of handling their creation. Nevertheless, they separate the representation of [`Animator`]s from their creation.
        
     - **Prototype**
     
@@ -293,5 +306,7 @@ As already mentioned, I am using a modified version of the [StageBuilder](https:
 [`Action`]: https://libgdx.badlogicgames.com/nightlies/docs/api/com/badlogic/gdx/scenes/scene2d/Action.html
 [`AnimatorConfig`]: ../master/core/src/com/tsanikgr/whist_multiplayer/myactors/Animator.java
 [`Animator`]: ../master/core/src/com/tsanikgr/whist_multiplayer/myactors/Animator.java
-
-
+[`Actor`]: https://libgdx.badlogicgames.com/nightlies/docs/api/com/badlogic/gdx/scenes/scene2d/Actor.html
+[xml layout files]: ../master/android/assets/layout/
+[`Group`]: https://libgdx.badlogicgames.com/nightlies/docs/api/com/badlogic/gdx/scenes/scene2d/Group.html
+[`StageBuilder`]: ../master/core/src/com/tsanikgr/whist_multiplayer/stage_builder/builders/StageBuilder.java

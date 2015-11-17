@@ -106,7 +106,7 @@ These are the **presenters** which handle the creation and the management of the
    - The [`MenuController`] updates the [`MenuScreen`] and gets notified about input events.
    - The [`GameController`] updates the [`GameScreen`] and gets notified about input & game events.
    
-The [`GameController`] delegates game actions to the concrete implementations the the [`IWhistGameController`] interface.
+The [`GameController`] delegates game actions to the concrete implementations of the [`IWhistGameController`] interface.
 
 #### 4. Game controllers (yellow)
 
@@ -122,7 +122,7 @@ All concrete implementations the the abstract class [`WhistGameController`] make
 ### Views
 ![Diagram 2 - Views](https://github.com/tsanikgr/whist/blob/master/uml/overview_views.png "Diagram 2 - Views")
 
-All UI elements derive from LibGDX's scene2d [`Actor`] class, a graph node that know how to draw itself on the screen.
+All UI elements derive from LibGDX's scene2d [`Actor`] class, a graph node that knows how to draw itself on the screen.
 
 > _LibGDX's [scene2d](https://github.com/libgdx/libgdx/wiki/Scene2d) "is a 2D scene graph for building applications and UIs using a hierarchy of actors"_
 
@@ -133,9 +133,9 @@ All UI elements derive from LibGDX's scene2d [`Actor`] class, a graph node that 
 [`Screen`]s are composite [`View`]s. They group UI elements expected to be shown together --- their names are self-explanatory: [`MenuScreen`] and [`GameScreen`]. 
 
 In addition:
-   - they are [`View`] factories: Given the view's .xml filenames, the instantiate the appropriate sub-classes of [`View`].
+   - they are [`View`] factories: Given the view's .xml filenames, they instantiate the appropriate sub-classes of [`View`].
    - they manage the lifecycle of all the [`View`]s they construct
-   - they are Facades to the [`IScreenController`]s. Most of the communication between views and presenters goes through them.
+   - they are Facades to the UI for the [`IScreenController`]s. Most of the communication between views and presenters goes through them.
 
 
 In the UML class diagram, [`View`]s created and managed by the [`MenuScreen`] are shown in purple. Those managed by the [`GameScreen`] are shown in red.

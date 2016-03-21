@@ -27,7 +27,7 @@ You can download the app from the [Google Play Store](https://play.google.com/st
 ### App statistics
 
 The android app uses Twitter's [Farbic](https://fabric.io) analytic tools to track various performance metrics. The following stats are a combination of the info provided by Google's Developer console and Fabric.
-(Updated 21st of March, 2 and a half months after the first public release)
+(Updated 21st of March, two and a half months after the first public release)
 
 * ~150 Daily active users
 * 250-350 Games per day

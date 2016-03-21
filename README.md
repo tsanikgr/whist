@@ -32,7 +32,7 @@ The android app uses Twitter's [Farbic](https://fabric.io) analytic tools to tra
 * ~150 Daily active users
 * 250-350 Games per day
 * 10-15 minutes/day time in app per user
-* 40-50 downloads per day on average (without any advertisement, all organic aquisitions)
+* 40-50 downloads per day on average (without any advertising, all organic aquisitions)
 * 40%-50% of Play store visitors are converted to downloads
 * 100% crash-free sessions
 * Day 1 retention 10%-30%, day-7 retention 5%-10%

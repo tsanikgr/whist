@@ -1,6 +1,7 @@
 **Table of Contents**
 
 - [Whist](#whist)
+   - [App statistics](#app statistics)
    - [Features](#features)
    - [About](#about)
    - [Setup instructions](#setup-instructions)
@@ -21,8 +22,21 @@
 Welcome to the GitHub page of Whist.
 
 Whist is a trick-taking card game with many variations. The one implemented herein is very similar to [Oh Hell](https://en.wikipedia.org/wiki/Oh_Hell).
-The Android version is currently in open alpha-testing in the [Google Play Store](https://goo.gl/3ISVdr). In case the link is not working for you, please [send me](mailto:ntsaoussis@gmail.com) your gmail address and I will add you to the list of testers.
+You can download the app from the [Google Play Store](https://play.google.com/store/apps/details?id=com.tsanikgr.whist_multiplayer.android). Please note that the code & documentation presented here are not up to date.
 
+### App statistics
+
+The android app uses Twitter's [Farbic](https://fabric.io) analytic tools to track various performance metrics. The following stats are a combination of the info provided by Google's Developer console and Fabric.
+(Updated 21st of March, 2 and a half months after the first public release)
+
+* ~150 Daily active users
+* 250-350 Games per day
+* 10-15 minutes/day time in app per user
+* 40-50 downloads per day on average (without any advertisement, all organic aquisitions)
+* 40%-50% of Play store visitors are converted to downloads
+* 100% crash-free sessions
+* Day 1 retention 10%-30%, day-7 retention 5%-10%
+* 4.54* rating (almost all of the negative reviews complain that the bots are impossible to win!)
 
 ### Features
 - Single player against computer opponents
@@ -32,7 +46,7 @@ The Android version is currently in open alpha-testing in the [Google Play Store
 
 Planned future work: tests, iOS app, [app invites & deep links](https://developers.google.com/app-invites/android/), more battery efficient computer opponents, better graphics, in app purchases, and more.
 
-> **Note:** The only reason I have not yet written unit tests is because I was trying to get this out here the soonest possible. However, I definitely plan to do so soon. 
+> **Note:** The only reason I have not yet written unit tests is because I was trying to get this out here the soonest possible. However, I definitely plan to do so soon.
 
 ### About
 
@@ -71,7 +85,7 @@ placed in the [`core`] package. It also uses a customised version (to fit my own
 ## Code Architecture
 The structure follows the **Model View Presenter (MVP)** architecture. That said, please do not be confused: all _Presenters_ extend the [`Controller`] abstract class, and follow the `XxxController` naming convention (after the Model View Controller (MVC) architecture which is very similar).
 
-In the following **UML class diagrams**, many classes are omitted for brevity reasons, including all `XxxModel` classes (many are shown as fields). Moreover, only a selection of the members of each class is shown to save space. 
+In the following **UML class diagrams**, many classes are omitted for brevity reasons, including all `XxxModel` classes (many are shown as fields). Moreover, only a selection of the members of each class is shown to save space.
 
 --------
 > **Tip:** You might prefer to navigate the diagrams whilst reading the descriptions below them.
@@ -95,7 +109,7 @@ In addition, [`AppController`] is a [`CompositeController`], and is the **root o
 
 #### 2. First level controllers (blue)
 
-The name of each controller ([`Assets`], [`Storage`], [`CardController`] etc.) and the members of the interfaces they implement pretty much sum up their responsibilities. 
+The name of each controller ([`Assets`], [`Storage`], [`CardController`] etc.) and the members of the interfaces they implement pretty much sum up their responsibilities.
 
 The most interesting one is the composite controller [`ScreenDirector`]. It creates the root of all [`View`] objects: this is represented by LibGDX's [`Stage`] object. Moreover, it creates three [`ScreenController`]s: the [`LoadingController`], the [`MenuController`] and the [`GameController`], and activates the appropriate one according to the state of the app.
 
@@ -105,7 +119,7 @@ These are the **presenters** which handle the creation and the management of the
    - The [`LoadingController`] updates the [`LoadingView`]
    - The [`MenuController`] updates the [`MenuScreen`] and gets notified about input events.
    - The [`GameController`] updates the [`GameScreen`] and gets notified about input & game events.
-   
+
 The [`GameController`] delegates game actions to the concrete implementations of the [`IWhistGameController`] interface.
 
 #### 4. Game controllers (yellow)
@@ -130,7 +144,7 @@ All UI elements derive from LibGDX's scene2d [`Actor`] class, a graph node that 
 
 ##### Screens
 
-[`Screen`]s are composite [`View`]s. They group UI elements expected to be shown together --- their names are self-explanatory: [`MenuScreen`] and [`GameScreen`]. 
+[`Screen`]s are composite [`View`]s. They group UI elements expected to be shown together --- their names are self-explanatory: [`MenuScreen`] and [`GameScreen`].
 
 In addition:
    - they are [`View`] factories: Given the view's .xml filenames, they instantiate the appropriate sub-classes of [`View`].
@@ -157,11 +171,11 @@ Although this algorithm is not suitable for a mobile application (... I guess us
 #### It is multithreaded
 
   Uses an `ExecutorService` to create a _fixedThreadPool_ (see [`WhistExecutorService`]). Synchronisation is achieved using `ReentrantReadWriteLock`s.
-  
+
 #### ... and recursive
 
   The game is simulated recursively. Whenever a recursive call is made, a read lock is obtained to see whether there are any idling threads. If so, the caller tries to obtain a write lock on the number of running threads: if successful, the number of active threads is incremented, and the simulation continues as a new task on the new thread. Otherwise the current thread continues normally.
-  
+
 #### ... and uses Pools to reduce the frequency of garbage collections
 
   Every time a game action is simulated, a new [`SimGameModel`] is created. Instead of creating a new object every time, [`SimGameModel`]s are recycled whenever they are no longer required. To make matters simpler, one pool is used per thread. See [`ThreadedGameModelPool`].
@@ -185,49 +199,49 @@ One example for each of the following software design patterns is given below.
 
 * #### Behavioral
     - **Observer**
-    
+
         The [`IStatistics`] controller is an observable which notifies the attached observers (e.g the [`UserView`], [`StatisticsView`] and [`CoinsView`]) when the [`StatisticsModel`] changes.
 
     - **Command**
 
       Whenever a task finishes on a background thread, this pattern is used to return to the main UI thread. Concrete commands are encapsulated in `Runnable` objects and are submitted for execution using the `Gdx.app.postRunnable()` utility function.
-      
+
     - **Mediator**
 
       Classes implementing the [`IScreenController`] interface are concrete mediators: they handle the interaction between UI elements and their corresponding model representations. In other words, [`ScreenController`]s update the [`Screen`]s, and are informed by the [`Screen`]s about user events to update the models ([`Screen`]s inherit from [`EventListener`]).
-      
+
     - **Memento**
-    
+
       This pattern is used for game saving & loading. The [`GameController`] (originator) supplies the [`IWhistGameController`]s (caretakers) a [`GameModel`] object to continue from a previously saved game.
-            
+
     - **Strategy**
 
       Classes implementing the [`WhistAiInterface`] can be swapped to create different bots. Classes extending [`AbstractWhistAi`] execute the strategy's logic asynchronously by default.
 
 * #### Structural
     - **Composite**
-    
+
        The object graph of all [`Controller]`s is formed using the composite pattern. [`CompositeController`]s, such as the app entry point ([`AppController`]), delegate work to their child controllers. Also, [`Screen`]s are composite [`View`]s.
-       
+
     - **Facade**
-    
+
        [`Screen`]s are facades to [`View`]s. Most of the communication between [`IScreenController]`s and UI elements go through them (in other words screens delegate updates to the appropriate [`View`].)
-       
+
     - **Pools**
-    
+
        Pools are used to recycle objects, and hence reduce the frequency of garbage collections. They are used in many places: network messages ([`MultiplayerMessage`]), simulated game states ([`SimGameModel`]), `Action`s attached to actors etc.
 
 * #### Creational
     - **Factory method**
-    
+
       The abstract class `[Screen]` provides the methods `buildViewSync(String)`, `buildViewAsync(String)` and `getView(String, Class<T>)`. The subclasses of [`Screen`] decide which views to instantiate.
-    
+
     - **Builder**
-    
+
        A variation of the builder pattern is used for the circular reveal animations. [`Animators`] provide an [`AnimatorParams`] object, which can be modified to customise the animation. However, [`AnimatorParams`] objects are not builders _per se_, since they are members of [`Animator`]s instead of handling their creation. Nevertheless, they separate the representation of [`Animator`]s from their creation.
-       
+
     - **Prototype**
-    
+
       [`GameModel`]s provide a `copy(GameModel)` member, which returns a clone ...[`GameModel`].
 
 # Code metrics

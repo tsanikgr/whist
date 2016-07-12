@@ -1,9 +1,7 @@
 **Table of Contents**
 
 - [Whist](#whist)
-   - [App statistics](#app statistics)
    - [Features](#features)
-   - [About](#about)
    - [Setup instructions](#setup-instructions)
 - [High level overview](#high-level-overview)
 	- [Code Architecture](#code-architecture)
@@ -14,29 +12,14 @@
 	- [Multiplayer](#multiplayer)
 	- [Software design pattern examples](#software-design-pattern-examples)
 - [Code metrics](#code-metrics)
+- [App statistics](#app statistics)
 - [Used libraries & code](#used-libraries--code)
 
 
 # Whist
 
-Welcome to the GitHub page of Whist.
-
-Whist is a trick-taking card game with many variations. The one implemented herein is very similar to [Oh Hell](https://en.wikipedia.org/wiki/Oh_Hell).
+Whist is a trick-taking card game with many variations. The one implemented here is very similar to [Oh Hell](https://en.wikipedia.org/wiki/Oh_Hell).
 You can download the app from the [Google Play Store](https://play.google.com/store/apps/details?id=com.tsanikgr.whist_multiplayer.android). Please note that the code & documentation presented here are not up to date, as many more features have been added.
-
-### App statistics
-
-The android app uses Twitter's [Farbic](https://fabric.io) analytic tools to track various performance metrics. The following stats are a combination of the info provided by Google's Developer console and Fabric.
-(Updated 21st of March, two and a half months after the first public release)
-
-* ~150 Daily active users
-* 250-350 Games per day
-* 10-15 minutes/day time in app per user
-* 40-50 downloads per day on average (without any advertising, all organic aquisitions)
-* 40%-50% of Play store visitors are converted to downloads
-* 100% crash-free sessions
-* Day 1 retention 10%-30%, day-7 retention 5%-10%
-* 4.54* rating (almost all of the negative reviews complain that the bots are impossible to win!)
 
 ### Features
 - Single player against computer opponents
@@ -45,15 +28,6 @@ The android app uses Twitter's [Farbic](https://fabric.io) analytic tools to tra
 - Statistics, game settings & variants
 
 Planned future work: tests, iOS app, [app invites & deep links](https://developers.google.com/app-invites/android/), more battery efficient computer opponents, better graphics, in app purchases, and more.
-
-> **Note:** The only reason I have not yet written unit tests is because I was trying to get this out here the soonest possible. However, I definitely plan to do so soon.
-
-### About
-
-This project started from scratch in **September of 2015** and the biggest part was complete by **mid-October**. Some chunks of code have been iterated over-and-over again during the past years, whenever I found time to experiment with Android development. However, every single line of re-used code has been revisited and (likely) refactored.
-
---------
-> _I never envisioned to make profit from this app --- I just love writing code in my free time, and decided to write an app for the card game I enjoy the most playing with my friends._
 
 --------
 
@@ -74,13 +48,10 @@ In case you want to build and run the project yourself, you need to:
 
 # High level overview
 
-The app is built on top of the [LibGDX](https://github.com/libGDX/libGDX) game development framework and it is written in Java. Currently, it compiles for Android and Desktop,
-with an iOS version planned for the future. Platform specific code is placed in the [`android`], [`desktop`] and [`ios`] directories, whereas all platform independent code is
+The app is built on top of the [LibGDX](https://github.com/libGDX/libGDX) game development framework and it is written in Java. Currently, it compiles for Android and Desktop, and iOS. Platform specific code is placed in the [`android`], [`desktop`] and [`ios`] directories, whereas all platform independent code is
 placed in the [`core`] package. It also uses a customised version (to fit my own needs) of the [StageBuilder](https://github.com/peakgames/libgdx-stagebuilder) library, a project for building LibGDX stages (screens) from xml files. Please have a look at my other [repository](https://github.com/tsanikgr/illustrator-to-android), where I supply an Adobe Illustrator javascript which automatically exports graphical assets and .xml files for use with StageBuilder. Once the Illustrator file is updated, the UI of the app can be updated using two clicks, with no code modification needed whatsoever.
 
 > One of the primary goals when I decided to write this game from scratch, was to create my own library, tools and workflows. This would allow me to quickly build new games in the future. As such, my top priorities were **code re-usability, maintainability, testability and minimal dependencies**.
-
-
 
 ## Code Architecture
 The structure follows the **Model View Presenter (MVP)** architecture. That said, please do not be confused: all _Presenters_ extend the [`Controller`] abstract class, and follow the `XxxController` naming convention (after the Model View Controller (MVC) architecture which is very similar).
@@ -261,6 +232,19 @@ In case you are interested, here are some of the metrics I obtain using the stat
 	* _per class_: *__17.2__*
 	* _per file_: *__22.5__*
 
+### App statistics
+
+The android app uses Twitter's [Farbic](https://fabric.io) analytic tools to track various performance metrics. The following stats are a combination of the info provided by Google's Developer console and Fabric.
+(Updated 21st of March, two and a half months after the first public release)
+
+* ~150 Daily active users
+* 250-350 Games per day
+* 10-15 minutes/day time in app per user
+* 40-50 downloads per day on average (without any advertising, all organic aquisitions)
+* 40%-50% of Play store visitors are converted to downloads
+* 100% crash-free sessions
+* Day 1 retention 10%-30%, day-7 retention 5%-10%
+* 4.54* rating (almost all of the negative reviews complain that the bots are impossible to win!)
 
 # Used libraries & code
 

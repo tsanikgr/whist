@@ -235,16 +235,15 @@ In case you are interested, here are some of the metrics I obtain using the stat
 ### App statistics
 
 The android app uses Twitter's [Farbic](https://fabric.io) analytic tools to track various performance metrics. The following stats are a combination of the info provided by Google's Developer console and Fabric.
-(Updated 21st of March, two and a half months after the first public release)
+(Updated 1st of December 2016, approximately a year after the first public release)
 
-* ~150 Daily active users
-* 250-350 Games per day
-* 10-15 minutes/day time in app per user
-* 40-50 downloads per day on average (without any advertising, all organic aquisitions)
-* 40%-50% of Play store visitors are converted to downloads
-* 100% crash-free sessions
-* Day 1 retention 10%-30%, day-7 retention 5%-10%
-* 4.54* rating (almost all of the negative reviews complain that the bots are impossible to win!)
+* ~500 Daily active users
+* 1500-2000 Games per day
+* 15-20 minutes/day time in app per user
+* 110 downloads per day on average (without any advertising, all organic aquisitions)
+* 48% of Play store visitors are converted to downloads
+* 99.4% crash-free sessions
+* 4.34* rating (almost all of the negative reviews complain that the bots are impossible to win!)
 
 # Used libraries & code
 
